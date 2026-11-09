@@ -9,7 +9,7 @@ Hungry Natsu is a Flutter app for Android and iOS that combines a food diary, ca
 - Search 197 staple foods without barcodes: 105 fruits, vegetables, herbs, and mushrooms; 44 grains and rice products; 24 meat and poultry products; 22 fish and seafood products; plus eggs and milk. Nutrition values are given per 100 g.
 - Switch between English and Russian on the home screen. Search works with names in either language.
 - Add foods manually with calories, protein, fat, carbohydrates, and an optional barcode.
-- Scan 8–14 digit EAN/UPC-style barcodes with the camera. An unknown barcode opens the new-food form.
+- Scan 8–14 digit EAN/UPC-style barcodes with the camera using `flutter_zxing` (ZXing C++), instead of Google ML Kit. An unknown barcode opens the new-food form.
 - Keep a diary by day, enter portion weights, calculate calories and macronutrients automatically, and delete entries.
 - Sort foods by how often they have been added to the diary across all days. Ties are sorted by name, and deleted entries no longer count.
 - Store data locally on the device without an account or network connection. When configured with Supabase, use email and password authentication, a private cloud diary protected by row-level security, and a shared catalog of foods created by signed-in users. Existing local entries are not transferred to the cloud automatically.
