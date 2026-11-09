@@ -1,5 +1,7 @@
 # Hungry Natsu
 
+<img src="assets/natsu_repository_art.png" alt="Illustration of a tabby cat in front of an orange circle" width="360">
+
 Hungry Natsu is a Flutter app for Android and iOS that combines a food diary, calorie and macronutrient tracking, a food catalog, and barcode scanning.
 
 ## Features
