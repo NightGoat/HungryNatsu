@@ -1,62 +1,70 @@
 # Hungry Natsu
 
-Учебное Flutter-приложение для Android и iOS: дневник калорий, БЖУ, каталог продуктов и сканирование штрихкодов.
+Hungry Natsu is a Flutter app for Android and iOS that combines a food diary, calorie and macronutrient tracking, a food catalog, and barcode scanning.
 
-## Что работает
+## Features
 
-- Поиск 197 базовых продуктов без штрихкода: 105 фруктов, овощей, зелени и грибов, 44 позиции круп и риса, 24 позиции мяса и птицы, 22 позиции рыбы и морепродуктов, а также яйцо и молоко. Все значения указаны на 100 г.
-- Русский и английский интерфейс с переключателем на главном экране. Поиск понимает названия на обоих языках.
-- Создание продукта вручную: калории, белки, жиры, углеводы и необязательный штрихкод.
-- Сканирование камерой EAN/UPC-подобных числовых кодов (8–14 цифр). Если код неизвестен, открывается форма нового продукта.
-- Дневник по дням, масса порции, автоматический пересчёт калорий и БЖУ, удаление записи.
-- В каталоге и результатах поиска продукты сортируются по числу добавлений в дневник за все дни. При равной частоте — по названию; удалённые записи больше не учитываются.
-- Без Supabase: локальное хранение на устройстве. С Supabase: регистрация и вход по почте и паролю, личный дневник в облаке с RLS. Созданные продукты сразу доступны в общем каталоге всем вошедшим пользователям.
-- В аккаунте можно задать дневную цель калорий; она и прогресс показываются на главном экране. В облачном режиме записи дневника старше трёх месяцев удаляются из базы ежедневно в 03:00 UTC; календарь ограничен этим периодом.
-- В аккаунте есть необязательный помощник по целям для похудения, поддержания веса и набора мышц. Он предлагает белок по весу; для калорий, жиров и углеводов также нужны пол для формулы, возраст, рост и уровень активности. Предложенные цели можно изменить вручную перед сохранением. Введённые параметры тела не сохраняются.
+- Search 197 staple foods without barcodes: 105 fruits, vegetables, herbs, and mushrooms; 44 grains and rice products; 24 meat and poultry products; 22 fish and seafood products; plus eggs and milk. Nutrition values are given per 100 g.
+- Switch between English and Russian on the home screen. Search works with names in either language.
+- Add foods manually with calories, protein, fat, carbohydrates, and an optional barcode.
+- Scan 8–14 digit EAN/UPC-style barcodes with the camera. An unknown barcode opens the new-food form.
+- Keep a diary by day, enter portion weights, calculate calories and macronutrients automatically, and delete entries.
+- Sort foods by how often they have been added to the diary across all days. Ties are sorted by name, and deleted entries no longer count.
+- Store data locally on the device without an account or network connection. When configured with Supabase, use email and password authentication, a private cloud diary protected by row-level security, and a shared catalog of foods created by signed-in users. Existing local entries are not transferred to the cloud automatically.
+- Set a daily calorie goal and see progress on the home screen. In cloud mode, diary entries older than three months are deleted from the database daily at 03:00 UTC, and the calendar is limited to that period.
+- Use the optional goal helper for weight loss, maintenance, or muscle gain. It estimates protein from body weight and uses sex, age, height, and activity level to estimate calorie, fat, and carbohydrate goals. Suggested goals can be edited before saving. The body measurements entered into the helper are not stored.
 
-## Основа расчёта целей
+## Goal calculations
 
-Помощник рассчитан на взрослых. Расход в покое оценивается по [формуле Mifflin–St Jeor](https://pubmed.ncbi.nlm.nih.gov/2305711/), затем умножается на выбранный коэффициент активности (1,2 / 1,375 / 1,55 / 1,725). Для похудения начальный дефицит составляет 15%, максимум 500 ккал в день, с нижним пределом 1200 ккал для женщин и 1500 ккал для мужчин; при ИМТ ниже 18,5 калорийная цель на снижение веса не предлагается. Для набора мышц предложен начальный профицит 10%: [обзор спортивного питания](https://pmc.ncbi.nlm.nih.gov/articles/PMC6680710/) описывает диапазон 10–20% и необходимость подстройки по темпу набора веса.
+The goal helper is intended for adults. It estimates resting energy expenditure using the [Mifflin–St Jeor equation](https://pubmed.ncbi.nlm.nih.gov/2305711/) and multiplies it by an activity factor of 1.2, 1.375, 1.55, or 1.725. For weight loss, it starts with a 15% deficit capped at 500 kcal per day, with minimum targets of 1,200 kcal for women and 1,500 kcal for men. It does not suggest a weight-loss calorie target when BMI is below 18.5. For muscle gain, it starts with a 10% surplus; a [sports nutrition review](https://pmc.ncbi.nlm.nih.gov/articles/PMC6680710/) discusses a 10–20% range and adjustment based on the rate of weight gain.
 
-Белок: 0,8 г/кг для обычного режима, 1,6 г/кг для похудения и 1,8 г/кг для набора с силовыми тренировками. Для похудения ориентир 1,2–1,6 г/кг приведён в [обзоре исследований](https://ajcn.nutrition.org/article/S0002-9165%2823%2927427-4/fulltext); для тренирующихся диапазон 1,4–2,0 г/кг указан в [позиции ISSN](https://pmc.ncbi.nlm.nih.gov/articles/PMC5477153/). Расчёт — отправная точка, а не медицинское назначение; потребность следует уточнять по динамике веса за несколько недель. При беременности, кормлении, болезни почек или расстройстве пищевого поведения нужен индивидуальный совет специалиста. [NIH Body Weight Planner](https://www.niddk.nih.gov/health-information/weight-management/body-weight-planner) также ограничивает применение расчётов взрослыми и исключает беременность и кормление.
+Protein targets are 0.8 g/kg for maintenance, 1.6 g/kg for weight loss, and 1.8 g/kg for muscle gain with strength training. A [research review](https://ajcn.nutrition.org/article/S0002-9165%2823%2927427-4/fulltext) gives a 1.2–1.6 g/kg range for weight loss, and the [ISSN position stand](https://pmc.ncbi.nlm.nih.gov/articles/PMC5477153/) gives a 1.4–2.0 g/kg range for exercising individuals. These estimates are starting points, not medical prescriptions; needs should be adjusted based on weight trends over several weeks. Pregnancy, breastfeeding, kidney disease, and eating disorders require individual professional advice. The [NIH Body Weight Planner](https://www.niddk.nih.gov/health-information/weight-management/body-weight-planner) likewise limits its calculations to adults and excludes pregnancy and breastfeeding.
 
-Для полной цели белок ограничивается 30% калорий, жиры занимают 25% калорий, углеводы заполняют остаток энергетического бюджета (4/9/4 ккал на грамм). Доля жиров находится в [диапазоне 20–35% для взрослых](https://www.nationalacademies.org/read/10872/chapter/13); распределение углеводов после белка и жиров соответствует подходу [обзора питания бодибилдеров](https://pmc.ncbi.nlm.nih.gov/articles/PMC6680710/). Значения округляются до целых граммов.
+For a complete goal, protein is capped at 30% of calories, fat is set to 25%, and carbohydrates fill the remaining energy budget using 4/9/4 kcal per gram. The fat share falls within the [20–35% adult range](https://www.nationalacademies.org/read/10872/chapter/13); the carbohydrate allocation follows the approach in the [bodybuilding nutrition review](https://pmc.ncbi.nlm.nih.gov/articles/PMC6680710/). Values are rounded to whole grams.
 
-Крупы, рис, 89 фруктов и овощей, мясо и рыба взяты из **Livsmedelsverkets Livsmedelsdatabas version 2026-07-01**, [открытого API шведского агентства](https://www.livsmedelsverket.se/en/about-us/open-data/food-composition-data/). В CSV сохранены идентификатор записи и исходное название; значения калорий и БЖУ перенесены без изменения. Сухие и готовые крупы, сырое и приготовленное мясо и рыба записаны отдельно. Это общие продукты, а не данные конкретной марки.
+## Food data and attribution
 
-Остальные 16 фруктов и овощей в каталоге — сырые продукты из [USDA FoodData Central, SR Legacy 2018](https://fdc.nal.usda.gov/download-datasets/) (CC0); для них не найдено достаточно точного соответствия в шведской базе. В шведской базе показатель углеводов — усвояемые углеводы без клетчатки; в USDA — общие углеводы с клетчаткой. Яйцо и молоко имеют ориентировочные значения. Конкретный сорт и способ приготовления могут отличаться; для фасованных товаров проверяйте этикетку.
+Grains, rice, 89 fruits and vegetables, meat, and fish come from **Livsmedelsverkets Livsmedelsdatabas, version 2026-07-01**, via the [Swedish Food Agency's open API](https://www.livsmedelsverket.se/en/about-us/open-data/food-composition-data/). This data is published under CC BY 4.0. The CSV retains each source record ID and original name, and the calorie and macronutrient values were copied without modification. Dry and cooked grains, and raw and cooked meat and fish, are listed separately. These are generic foods rather than branded products.
 
-Исходные USDA ID, шведские SLV ID, названия и значения хранятся в `catalog/products.csv`; источник каждой позиции виден в приложении. Русские названия и соответствия USDA ID находятся в `catalog/produce_map.csv`. Чтобы обновить шведские записи из API, выполните `python3 scripts/import_swedish_catalog.py`, затем `python3 scripts/generate_catalog.py`. Чтобы заново взять значения USDA из официального архива, используйте `python3 scripts/generate_catalog.py --usda-zip /path/to/FoodData_Central_sr_legacy_food_csv_2018-04.zip`; шведские записи при этом сохранятся.
+The remaining 16 fruits and vegetables are raw foods from [USDA FoodData Central, SR Legacy 2018](https://fdc.nal.usda.gov/download-datasets/) (CC0), used where no sufficiently close match was found in the Swedish database. Swedish carbohydrate values exclude fiber, while USDA total carbohydrate values include it. Egg and milk values are approximate. Actual values vary by variety and preparation; check the label for packaged foods.
 
-## Запуск Android
+Source IDs, names, and values are stored in `catalog/products.csv`, and each food's source is visible in the app. Russian names and USDA ID mappings are stored in `catalog/produce_map.csv`.
 
-1. Установите [Flutter SDK](https://docs.flutter.dev/install) (Dart 3.9 или новее), Android Studio и Android SDK. Проверьте `flutter doctor`.
-2. В корне проекта запустите `bash scripts/bootstrap.sh`. Команда создаст стандартные папки Android и iOS, добавит разрешение камеры и установит пакеты.
-3. Подключите Android-телефон с USB debugging или запустите эмулятор. Проверьте `flutter devices`.
-4. Запустите `flutter run`.
+## Code structure
 
-Для проверки сканера нужен телефон или эмулятор с доступной камерой. Локальный режим работает без учётной записи и без сети.
+- `lib/models/` defines foods, diary entries, and goals. Food values always refer to 100 g.
+- `lib/data/food_repository.dart` defines the storage interface and its local and Supabase implementations.
+- `lib/ui/` contains the diary, food selection, account, and editing screens. The UI uses the storage interface.
+- `lib/main.dart` selects local or cloud storage from build-time configuration.
 
-## Подключение Supabase
+## Licenses and third-party components
 
-1. Создайте проект Supabase. В **Authentication → Providers → Email** включите вход по почте. Если включено подтверждение адреса, настройте шаблон письма и допустимый URL перенаправления в Supabase.
-2. Примените миграции командой `supabase db push --linked`. Начальная миграция создаёт таблицы, политики RLS и базовые продукты. Исходный SQL находится в [supabase/schema.sql](supabase/schema.sql).
-3. Создайте в корне проекта файл `supabase.local.json` с `SUPABASE_URL` и публичным `SUPABASE_ANON_KEY`. Файл исключён из Git. **Service role key нельзя помещать в приложение.**
-4. Запустите:
+The project's code and original assets are licensed under the [GNU Affero General Public License v3.0](LICENSE) (AGPL-3.0). The following dependencies and data retain their own terms:
 
-```bash
-flutter run --dart-define-from-file=supabase.local.json
-```
+| Component | License or terms | Use |
+| --- | --- | --- |
+| [Flutter](https://github.com/flutter/flutter/blob/stable/LICENSE) and [Dart](https://github.com/dart-lang/sdk/blob/main/LICENSE) | BSD 3-Clause | App framework and language SDK; Flutter's `flutter_localizations` and `flutter_test` are part of this SDK |
+| [mobile_scanner](https://github.com/juliansteenbakker/mobile_scanner/blob/develop/LICENSE) | BSD 3-Clause | Camera-based barcode scanning plugin |
+| [shared_preferences](https://github.com/flutter/packages/blob/main/packages/shared_preferences/shared_preferences/LICENSE) | BSD 3-Clause | Local data storage |
+| [supabase_flutter](https://github.com/supabase/supabase-flutter/blob/main/packages/supabase_flutter/LICENSE) | MIT | Optional cloud authentication and storage client |
+| [flutter_lints](https://github.com/flutter/packages/blob/main/packages/flutter_lints/LICENSE) | BSD 3-Clause | Development-time lint rules |
+| [Livsmedelsverket food composition data](https://www.livsmedelsverket.se/en/about-us/open-data/food-composition-data/) | CC BY 4.0 | Swedish food records; attribution to the Swedish Food Agency is required |
+| [USDA FoodData Central data](https://fdc.nal.usda.gov/api-guide/) | CC0 1.0 | SR Legacy food records |
+| [Google ML Kit Barcode Scanning](https://developers.google.com/ml-kit/terms) | Google ML Kit terms; proprietary SDK | Android barcode recognition through `mobile_scanner` |
 
-В облачном режиме на первом запуске откроется экран входа. После регистрации с подтверждением почты откройте письмо, подтвердите адрес и войдите. Сессия сохраняется SDK на устройстве. Дневник и созданные продукты доступны после входа на другом устройстве. Если на устройстве уже есть анонимная сессия старой версии, регистрация привяжет почту к этому же пользователю и сохранит его облачный дневник. Существующие локальные записи автоматически в облако не переносятся.
+The licenses above apply to the named components, not to the project as a whole. Every resolved Dart package, including transitive and development dependencies, is listed in [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md) with its version and license. Native dependencies retain their own upstream terms. The current Android scanner's Google ML Kit dependency is not free software and must be replaced or excluded for an F-Droid build.
 
-Для возврата из письма в мобильное приложение добавьте `com.nightgoat.hungrynatsu://auth-callback/` в **Authentication → URL Configuration → Redirect URLs** проекта Supabase. Этот же адрес указан в приложении и в `supabase/config.toml` как Site URL.
+## APIs and data sources
 
-## Как устроен код
+| API or source | When used | Purpose |
+| --- | --- | --- |
+| [Livsmedelsverket Food Composition API](https://www.livsmedelsverket.se/en/about-us/open-data/food-composition-data/) | Catalog preparation | Import Swedish food composition records |
+| [USDA FoodData Central SR Legacy download](https://fdc.nal.usda.gov/download-datasets/) | Catalog preparation | Import additional foods from a downloadable dataset, not a runtime API |
+| [Supabase Auth and database APIs](https://supabase.com/docs/reference/dart/introduction) | Runtime, only when cloud mode is configured | Email authentication, private diary storage, and shared food catalog |
+| [Google ML Kit Barcode Scanning API](https://developers.google.com/ml-kit/vision/barcode-scanning/android) | Runtime on Android when scanning | Recognize barcodes from camera frames |
 
-- `lib/models/` — продукт и запись дневника; значения продукта всегда относятся к 100 г.
-- `lib/data/food_repository.dart` — единый интерфейс хранилища и две реализации: `LocalFoodRepository` и `SupabaseFoodRepository`.
-- `lib/ui/` — экраны дневника, выбора продукта и формы ввода. UI обращается к интерфейсу хранилища, а не напрямую к Supabase.
-- `lib/main.dart` — точка сборки приложения и выбор хранилища через `--dart-define`.
+The local mode does not require a network service. The app does not call an AI API at runtime.
 
-Проверка после установки SDK: `flutter analyze` и `flutter test`.
+## AI assistance
+
+This application was written with the assistance of AI tools, including OpenAI Codex/ChatGPT.
