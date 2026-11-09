@@ -1,0 +1,198 @@
+id,name,name_en,category,calories,protein,fat,carbs,fdc_id,slv_id,source_description
+apple,Яблоко,Apple,fruit,48,0.0,0.0,10.6,,588,Apple w/ skin
+apricot,Абрикос,Apricot,fruit,38,0.8,0.0,7.4,,552,Apricot
+avocado,Авокадо,Avocado,fruit,197,1.9,19.6,1.7,,320,Avocado
+banana,Банан,Banana,fruit,95,1.1,0.1,21.3,,553,Banana
+blackberry,Ежевика,Blackberry,fruit,35,1.3,0.5,3.8,,554,Blackberries
+blueberry,Голубика,Blueberry,fruit,54,0.3,0.3,10.6,,7042,Highbush blueberry (American blueberries)
+cherry,Черешня,Sweet cherry,fruit,62,1.0,0.0,13.6,,571,Sweet cherries
+sour_cherry,Вишня,Sour cherry,fruit,61,0.9,0.1,13.3,,570,Sour cherries
+cranberry,Клюква,Cranberry,fruit,46,0.4,0.2,8.9,,584,Cranberries
+blackcurrant,Смородина чёрная,Blackcurrant,fruit,68,1.4,1.1,10.2,,586,Black currant
+redcurrant,Смородина красная,Redcurrant,fruit,48,1.2,0.2,8.7,,585,Red currant
+fig,Инжир,Fig,fruit,87,2.0,0.4,16.3,,561,Fig
+gooseberry,Крыжовник,Gooseberry,fruit,38,0.8,0.6,5.7,,566,Gooseberries
+grapefruit,Грейпфрут,Grapefruit,fruit,43,0.9,0.5,8.3,,521,Grapefruit
+grape,Виноград,Grape,fruit,70,0.6,0.2,15.6,,587,Grapes
+guava,Гуава,Guava,fruit,33,0.6,0.1,4.8,,522,Guava
+kiwi,Киви,Kiwi fruit,fruit,53,0.9,0.7,9.0,,565,Kiwi fruit green
+lemon,Лимон,Lemon,fruit,50,0.9,0.7,7.6,,559,Lemon
+lime,Лайм,Lime,fruit,47,0.7,0.2,10.3,,572,Lime
+lychee,Личи,Lychee,fruit,55,1.0,0.3,11.4,,2569,Lychee
+mango,Манго,Mango,fruit,52,0.7,0.0,11.2,,574,Mango
+honeydew,Дыня медовая,Honeydew melon,fruit,34,0.6,0.0,7.5,,546,Honeydew melon
+cantaloupe,Дыня канталупа,Cantaloupe melon,fruit,37,0.9,0.3,7.1,,547,Musk melon
+watermelon,Арбуз,Watermelon,fruit,34,0.6,0.0,7.5,,549,Watermelon
+nectarine,Нектарин,Nectarine,fruit,40,0.8,0.0,8.4,,576,Nectarine
+orange,Апельсин,Orange,fruit,50,0.8,0.2,10.4,,551,Orange
+papaya,Папайя,Papaya,fruit,48,0.8,0.6,8.9,,577,Papaya
+peach,Персик,Peach,fruit,42,0.8,0.0,8.5,,580,Peach
+pear,Груша,Pear,fruit,54,0.3,0.1,11.5,,583,Pear
+pineapple,Ананас,Pineapple,fruit,47,0.6,0.0,10.2,,550,Pineapple
+plum,Слива,Plum,fruit,44,0.7,0.0,9.1,,582,Plum
+pomegranate,Гранат,Pomegranate,fruit,67,1.1,0.4,12.0,,520,Pomegranate
+raspberry,Малина,Raspberry,fruit,34,1.2,0.6,4.1,,523,Raspberries
+strawberry,Клубника,Strawberry,fruit,41,0.5,0.2,8.3,,526,Strawberries
+tangerine,Мандарин,Mandarin,fruit,53,0.81,0.31,13.34,169105,,"Tangerines, (mandarin oranges), raw"
+persimmon,Хурма,Persimmon,fruit,70,0.58,0.19,18.59,169941,,"Persimmons, japanese, raw"
+quince,Айва,Quince,fruit,63,0.4,0.1,13.1,,569,Quince
+passion_fruit,Маракуйя,Passion fruit,fruit,87,2.2,0.7,12.9,,579,Passion fruit
+pomelo,Помело,Pomelo,fruit,38,0.76,0.04,9.62,167754,,"Pummelo, raw"
+durian,Дуриан,Durian,fruit,147,1.47,5.33,27.09,168192,,"Durian, raw or frozen"
+clementine,Клементин,Clementine,fruit,54,0.8,0.2,11.4,,560,Small citrus fruit clementine mandarin satsuma
+mulberry,Шелковица,Mulberry,fruit,56,1.2,0.4,10.5,,7019,Mulberry
+feijoa,Фейхоа,Feijoa,fruit,61,0.71,0.42,15.21,168176,,"Feijoa, raw"
+starfruit,Карамбола,Starfruit,fruit,30,0.8,0.4,4.5,,2570,Carambola (star fruit)
+jackfruit,Джекфрут,Jackfruit,fruit,95,1.72,0.64,23.25,174687,,"Jackfruit, raw"
+prickly_pear,Опунция,Prickly pear,fruit,39,0.7,0.5,6.7,,564,Prickly pear
+kumquat,Кумкват,Kumquat,fruit,69,0.5,0.7,12.9,,568,Kumquat
+plantain,Плантан,Plantain,fruit,136,1.3,0.4,30.4,,575,Plantain cooking banana
+potato,Картофель,Potato,vegetable,81,1.8,0.1,16.8,,230,Potato old raw
+tomato,Помидор,Tomato,vegetable,18,0.8,0.1,2.6,,364,Tomato
+cucumber,Огурец,Cucumber,vegetable,13,0.8,0.1,2.3,,339,Cucumber
+carrot,Морковь,Carrot,vegetable,36,0.7,0.2,6.6,,289,Carrot
+beet,Свёкла,Beet,vegetable,51,1.2,0.1,9.8,,294,Beetroot
+cabbage,Капуста белокочанная,White cabbage,vegetable,32,1.2,0.0,5.7,,370,White cabbage
+red_cabbage,Капуста краснокочанная,Red cabbage,vegetable,31,1.1,0.3,4.7,,355,Red cabbage
+savoy_cabbage,Капуста савойская,Savoy cabbage,vegetable,28,2.0,0.1,3.6,,357,Savoy cabbage
+cauliflower,Цветная капуста,Cauliflower,vegetable,25,1.7,0.0,3.7,,322,Cauliflower
+broccoli,Брокколи,Broccoli,vegetable,36,2.9,0.6,3.5,,325,Broccoli
+brussels_sprouts,Брюссельская капуста,Brussels sprouts,vegetable,44,3.4,0.3,4.7,,327,Brussels sprouts
+eggplant,Баклажан,Eggplant,vegetable,19,1.1,0.1,2.2,,372,Aubergine
+zucchini,Кабачок,Zucchini,vegetable,14,0.0,0.1,2.5,,362,Squash
+pumpkin,Тыква,Pumpkin,vegetable,26,1.0,0.1,4.4,,353,Pumpkin
+butternut_squash,Тыква мускатная,Butternut squash,vegetable,45,1,0.1,11.69,169295,,"Squash, winter, butternut, raw"
+red_pepper,Перец сладкий красный,Red bell pepper,vegetable,22,0.5,0.2,4.1,,351,Bell pepper red
+green_pepper,Перец сладкий зелёный,Green bell pepper,vegetable,18,0.5,0.1,3.0,,350,Bell pepper green
+yellow_pepper,Перец сладкий жёлтый,Yellow bell pepper,vegetable,24,0.5,0.2,4.3,,381,Bell pepper yellow
+chili_pepper,Перец чили красный,Red chili pepper,vegetable,49,2.4,0.7,5.9,,380,Chili pepper raw
+onion,Лук репчатый,Onion,vegetable,39,1.2,0.1,7.3,,344,Onion yellow
+garlic,Чеснок,Garlic,vegetable,128,6.8,0.2,21.9,,371,Garlic
+shallot,Лук шалот,Shallot,vegetable,72,2.5,0.1,16.8,170499,,"Shallots, raw"
+scallion,Лук зелёный,Spring onion,vegetable,32,1.83,0.19,7.34,170005,,"Onions, spring or scallions (includes tops and bulb), raw"
+leek,Лук порей,Leek,vegetable,30,1.6,0.2,4.1,,354,Leek
+spinach,Шпинат,Spinach,vegetable,24,3.3,0.4,0.8,,4941,Spinach raw
+iceberg_lettuce,Салат айсберг,Iceberg lettuce,vegetable,14,0.8,0.1,2.5,,340,Iceberg lettuce
+romaine_lettuce,Салат ромэн,Romaine lettuce,vegetable,16,1.9,0.2,0.9,,2559,Romaine lettuce
+arugula,Руккола,Arugula,vegetable,21,3.6,0.4,0.0,,2561,Arugula rocket salad
+kale,Кейл,Kale,vegetable,40,3.4,0.7,3.2,,337,Kale
+cilantro,Кинза,Coriander leaves,vegetable,37,3.5,0.7,1.9,,7193,Coriander leaves
+celery,Сельдерей стеблевой,Celery,vegetable,19,1.0,0.2,2.3,,321,Celery
+celeriac,Сельдерей корневой,Celeriac,vegetable,32,1.0,0.5,4.4,,292,Celeriac
+parsnip,Пастернак,Parsnip,vegetable,71,1.7,0.6,12.6,,290,Parsnip
+radish,Редис,Radish,vegetable,11,0.7,0.4,0.7,,293,Radish
+turnip,Репа,Turnip,vegetable,35,1.1,0.3,6.0,,297,Turnip
+rutabaga,Брюква,Rutabaga,vegetable,37,1.4,0.1,6.1,,288,Swede
+sweet_potato,Батат,Sweet potato,vegetable,71,1.6,0.4,12.9,,3765,Sweet potatoe raw
+yam,Ямс,Yam,vegetable,118,1.53,0.17,27.88,170071,,"Yam, raw"
+sweet_corn,Кукуруза сладкая,Sweet corn,vegetable,125,3.9,1.6,22.1,,345,Corn cobs
+green_peas,Горох зелёный,Green peas,vegetable,81,5.42,0.4,14.45,170419,,"Peas, green, raw"
+green_beans,Фасоль стручковая,Green beans,vegetable,27,2.1,0.4,2.1,,331,Green beans
+asparagus,Спаржа,Asparagus,vegetable,20,2.2,0.12,3.88,168389,,"Asparagus, raw"
+fennel,Фенхель,Fennel,vegetable,28,2.8,0.4,1.8,,336,Fennel
+okra,Бамия,Okra,vegetable,33,1.93,0.19,7.45,169260,,"Okra, raw"
+artichoke,Артишок,Artichoke,vegetable,52,2.7,0.2,7.3,,342,Globe artichoke
+swiss_chard,Мангольд,Swiss chard,vegetable,21,1.8,0.2,2.6,,348,Swiss chard
+watercress,Кресс водяной,Watercress,vegetable,15,1.9,0.3,0.5,,367,Watercress
+white_mushroom,Шампиньон,Button mushroom,vegetable,27,2.4,0.2,2.7,,333,Button mushroom
+oyster_mushroom,Вешенка,Oyster mushroom,vegetable,26,2.0,0.4,2.6,,7035,Oyster mushroom
+shiitake,Шиитаке,Shiitake,vegetable,18,1.8,0.3,0.5,,7034,Shiitake mushroom
+portobello,Портобелло,Portobello,vegetable,22,2.11,0.35,3.87,169255,,"Mushrooms, portabella, raw"
+chanterelle,Лисички,Chanterelle,vegetable,32,1.49,0.53,6.86,168422,,"Mushrooms, Chanterelle, raw"
+enoki,Эноки,Enoki,vegetable,37,2.66,0.29,7.81,169382,,"Mushrooms, enoki, raw"
+ginger,Имбирь,Ginger,vegetable,63,2.2,0.8,9.0,,2269,Ginger fresh
+kohlrabi,Кольраби,Kohlrabi,vegetable,29,1.7,0.1,4.4,,343,Kohlrabi
+bok_choy,Пак чой,Bok choy,vegetable,19,1.4,0.2,1.8,,7192,Pak choi
+chinese_cabbage,Пекинская капуста,Chinese cabbage,vegetable,21,1.3,0.1,2.7,,358,Napa cabbage
+egg,Яйцо куриное,Chicken egg,other,143,12.6,9.5,0.7,,,Ориентировочные значения
+rice,Рис варёный,"Rice, cooked",other,113,2.5,0.2,24.6,,2515,Rice long-grained boiled w/ salt
+chicken,"Куриная грудка, жареная","Chicken breast, fried",meat,116,23.0,2.5,0.0,,1170,Chicken breast fillet fresh meat fried w/o skin
+milk,"Молоко 2,5%",Milk 2.5% fat,other,52,3,2.5,4.7,,,Ориентировочные значения
+oats_rolled,"Овсяные хлопья, сухие","Rolled oats, dry",grain,375,9.5,7.0,64.1,,702,Rolled oats wholegrain
+barley_flakes,"Ячменные хлопья, сухие","Barley flakes, dry",grain,351,9.2,3.1,65.4,,705,Rolled barley steamed wholegrain
+rye_flakes,"Ржаные хлопья, сухие","Rye flakes, dry",grain,323,9.2,1.5,61.1,,6481,Rye flakes wholegrain steamed
+wheat_flakes,"Пшеничные хлопья, сухие","Wheat flakes, dry",grain,328,10.2,2.0,61.0,,6482,Wheat flakes wholegrain steamed
+buckwheat_dry,"Гречка, сухая","Buckwheat, dry",grain,353,9.6,2.5,70.0,,825,Buckwheat whole or coarsely-ground grains
+millet_dry,"Пшено, сухое","Millet, dry",grain,352,10.5,2.9,68.4,,827,Millet grains or coarsely-ground grains wholegrain
+semolina_dry,"Манная крупа, сухая","Semolina, dry",grain,351,10.1,1.3,72.1,,828,Semolina
+bulgur_dry,"Булгур, сухой","Bulgur, dry",grain,353,12.3,1.3,68.2,,829,Bulgur
+bulgur_cooked,"Булгур, варёный","Bulgur, cooked",grain,129,4.3,1.2,23.1,,830,Bulgur cooked
+couscous_dry,"Кускус, сухой","Couscous, dry",grain,361,12.8,0.6,72.4,,831,Couscous
+couscous_cooked,"Кускус, готовый","Couscous, cooked",grain,108,3.8,0.2,21.8,,832,Couscous cooked
+pearl_barley_cooked,"Перловка, варёная","Pearl barley, cooked",grain,80,1.8,0.4,13.6,,833,Hulled barley steamed wholegrain boiled w/ salt 
+millet_cooked,"Пшено, варёное","Millet, cooked",grain,97,2.9,0.8,18.9,,834,Millet boiled w/ salt wholegrain 
+polenta_cooked,"Полента, готовая","Polenta, cooked",grain,68,1.7,0.4,13.4,,835,Corn semolina polenta boiled w/ salt
+brown_rice_cooked,"Рис бурый, варёный","Brown rice, cooked",grain,107,2.5,0.9,21.3,,804,Brown rice boiled w/ salt
+wild_rice_dry,"Рис дикий, сухой","Wild rice, dry",grain,360,14.7,1.1,68.7,,817,Wild rice dried
+wild_rice_cooked,"Рис дикий, варёный","Wild rice, cooked",grain,102,4.0,0.3,19.5,,818,Wild rice boiled w/ salt
+oatmeal_cooked,Овсяная каша на воде,Oatmeal porridge,grain,66,1.7,1.2,11.3,,677,Oatmeal porridge wholegrain
+semolina_cooked,Манная каша,Semolina porridge,grain,79,4.3,1.8,11.0,,682,Semolina porridge
+barley_porridge,Ячменная каша,Barley porridge,grain,63,1.7,0.6,11.9,,681,Porridge barley flour 
+quinoa_dry,"Киноа, сухая","Quinoa, dry",grain,356,14.4,6.1,56.8,,7025,Quinoa uncooked
+quinoa_cooked,"Киноа красная, варёная","Red quinoa, cooked",grain,140,4.4,2.4,21.7,,3518,Quinoa red boiled w/ salt
+spelt_cooked,"Полба, варёная","Spelt, cooked",grain,135,4.6,1.3,24.4,,3845,Dinkel wheat spelt wheat boiled w/ salt
+wheat_berries_cooked,"Пшеница цельная, варёная","Wheat berries, cooked",grain,178,4.5,0.7,33.5,,6145,Wheat berry boiled w/ salt
+oat_groats_cooked,"Овёс цельный, варёный","Oat groats, cooked",grain,199,5.8,3.0,33.1,,6146,Oat groats whole bolied w/ salt
+barley_cooked,"Ячмень, варёный","Barley, cooked",grain,82,2.1,0.7,15.2,,5935,Hulled barley boiled w/o salt
+oat_rice_cooked,"Овсяный рис, варёный","Oat rice, cooked",grain,170,5.6,2.7,28.5,,6999,Oat rice bolied w/ salt
+basmati_dry,"Рис басмати, сухой","Basmati rice, dry",grain,359,9.2,1.0,76.7,,2475,Rice Basmati dry
+basmati_cooked,"Рис басмати, варёный","Basmati rice, cooked",grain,121,3.1,0.3,25.9,,2513,Rice Basmati boiled w/ salt
+jasmine_dry,"Рис жасмин, сухой","Jasmine rice, dry",grain,354,7.5,0.7,78.2,,2477,Rice Jasmine dry
+jasmine_cooked,"Рис жасмин, варёный","Jasmine rice, cooked",grain,113,2.4,0.2,25.0,,2514,Rice Jasmine boiled w/ salt
+brown_rice_dry,"Рис бурый, сухой","Brown rice, dry",grain,365,9.4,3.0,71.9,,2478,Rice brown long-grain dry wholegrain
+white_rice_dry,"Рис белый, сухой","White rice, dry",grain,352,7.8,0.7,76.9,,2481,Rice long-grain dried uncooked
+parboiled_rice_dry,"Рис пропаренный, сухой","Parboiled rice, dry",grain,362,7.7,1.2,78.0,,2482,Rice long-grain parboiled dried uncooked
+parboiled_rice_cooked,"Рис пропаренный, варёный","Parboiled rice, cooked",grain,129,2.8,0.4,27.9,,2516,Rice long-grain parboiled boiled
+short_rice_dry,"Рис круглозёрный, сухой","Short-grain rice, dry",grain,361,6.4,0.8,80.2,,2485,Rice white short-grain for porridge dried uncooked
+short_rice_cooked,"Рис круглозёрный, варёный","Short-grain rice, cooked",grain,129,2.3,0.3,28.6,,4591,Rice white short-grain boiled w/ salt
+corn_grits_dry,"Кукурузная крупа, сухая","Corn semolina, dry",grain,354,6.0,3.4,71.5,,1933,Corn flour yellow refined or polenta
+polenta_dry,"Полента, сухая","Polenta, dry",grain,345,8.6,2.1,68.3,,6872,Polenta
+sorghum_dry,"Сорго, сухое","Sorghum, dry",grain,351,10.3,4.7,61.4,,826,Durra and other sorghum species wholegrain
+oat_flour,"Овсяная мука, сухая","Oat flour, dry",grain,352,11.3,4.4,59.2,,6468,Oat flour wholegrain
+spelt_flour,"Полбяная мука, сухая","Spelt flour, dry",grain,353,11.9,3.3,63.5,,3786,Spelt flour wholegrain
+amaranth_flour,"Амарантовая мука, сухая","Amaranth flour, dry",grain,352,15.0,6.0,55.2,,6677,Amaranth flour
+beef_raw,"Говядина, сырая","Beef, raw",meat,128,22.2,4.2,0.0,,5066,Beef meat raw
+beef_sirloin_raw,"Говяжий стейк, сырой","Beef sirloin, raw",meat,123,21.8,3.8,0.0,,946,Beef sirloin raw
+beef_tenderloin_raw,"Говяжья вырезка, сырая","Beef tenderloin, raw",meat,124,21.7,4.1,0.0,,949,Beef tender loin raw
+beef_mince_10_raw,"Говяжий фарш 10%, сырой","Beef mince 10% fat, raw",meat,182,20.1,11.3,0.0,,951,Beef minced meat raw 10% fat
+beef_mince_15_raw,"Говяжий фарш 15%, сырой","Beef mince 15% fat, raw",meat,211,19.4,15.0,0.0,,963,Beef mince meat raw 15% fat
+beef_sirloin_fried,"Говяжий стейк, жареный","Beef sirloin, fried",meat,144,25.5,4.5,0.0,,1014,Beef sirloin fried
+beef_roast_cooked,"Говядина, варёная","Beef roast, boiled",meat,149,26.7,4.5,0.0,,1039,Beef roast or pot roast boiled w/ salt
+pork_raw,"Свинина, сырая","Pork, raw",meat,155,19.2,8.7,0.0,,5447,Pork meat raw
+pork_tenderloin_raw,"Свиная вырезка, сырая","Pork tenderloin, raw",meat,107,20.6,2.6,0.0,,970,Pork tenderloin raw
+pork_chop_raw,"Свиная отбивная, сырая","Pork chop, raw",meat,103,21.6,1.7,0.0,,982,Pork chop raw w/o rind
+pork_mince_8_raw,"Свиной фарш 8%, сырой","Pork mince 8% fat, raw",meat,144,18.0,8.0,0.0,,992,Pork minced meat raw 8% fat
+pork_mince_20_raw,"Свиной фарш 20%, сырой","Pork mince 20% fat, raw",meat,242,16.0,20.0,0.0,,980,Pork minced meat raw 20% fat
+pork_tenderloin_cooked,"Свиная вырезка, готовая","Pork tenderloin, cooked",meat,118,20.0,4.1,0.0,,6005,Pork tenderloin cooked
+pork_grilled,"Свинина, гриль","Pork, grilled",meat,179,22.7,9.9,0.0,,1028,Pork meat grilled
+lamb_raw,"Баранина, сырая","Lamb, raw",meat,164,19.9,9.4,0.0,,5067,Lamb meat raw
+lamb_roast,"Баранина, запечённая",Lamb roast,meat,119,24.0,2.4,0.0,,1037,Lamb roast roasted
+veal_tenderloin_raw,"Телячья вырезка, сырая","Veal tenderloin, raw",meat,105,20.0,2.7,0.0,,936,Veal tenderloin raw
+veal_tenderloin_fried,"Телячья вырезка, жареная","Veal tenderloin, fried",meat,123,23.5,3.2,0.0,,1032,Veal tenderloin fried
+chicken_breast_raw,"Куриная грудка без кожи, сырая","Chicken breast without skin, raw",meat,104,23.1,1.2,0.0,,1173,Chicken breast fillet raw w/o skin
+chicken_boiled,"Курица, варёная","Chicken, boiled",meat,171,32.0,4.6,0.0,,1181,Chicken boiled w/ salt
+turkey_fillet_raw,"Филе индейки, сырое","Turkey fillet, raw",meat,106,24.1,0.9,0.0,,1162,Turkey fillet raw
+turkey_boiled,"Индейка, варёная","Turkey, boiled",meat,139,22.0,5.6,0.0,,1178,Turkey boiled
+duck_breast_raw,"Утиная грудка, сырая","Duck breast, raw",meat,119,19.9,4.3,0.0,,1151,Duck breast raw
+cod_raw,"Треска, сырая","Cod, raw",fish,78,18.2,0.5,0.0,,1246,Cod raw
+cod_poached,"Треска, отварная","Cod, poached",fish,130,30.3,0.8,0.0,,1335,Cod fillet poached w/ salt
+cod_fried,"Треска, жареная","Cod, fried",fish,108,25.2,0.7,0.0,,1337,Cod fried
+salmon_farmed_raw,"Лосось фермерский, сырой","Farmed salmon, raw",fish,210,21.2,13.9,0.3,,6225,Salmon farmed Norway raw
+salmon_wild_raw,"Лосось дикий, сырой","Wild salmon, raw",fish,188,22.5,10.4,1.1,,6173,Salmon wild Sweden raw
+salmon_fried,"Лосось, жареный","Salmon, fried",fish,221,24.1,13.5,0.8,,1316,Salmon fried w/ salt
+rainbow_trout_raw,"Форель радужная, сырая","Rainbow trout, raw",fish,106,18.1,3.5,0.4,,1261,Rainbow trout farmed raw
+brown_trout_raw,"Форель ручьевая, сырая","Brown trout, raw",fish,115,22.0,2.9,0.0,,1256,Brown trout brook trout Sweden raw
+arctic_char_raw,"Голец, сырой","Arctic char, raw",fish,151,19.9,7.9,0.0,,1244,Arctic char raw
+tuna_raw,"Тунец желтопёрый, сырой","Yellowfin tuna, raw",fish,95,21.7,0.6,0.5,,7156,Tuna yellowfin raw
+tuna_fried,"Тунец, жареный","Tuna, fried",fish,128,29.2,0.8,0.7,,1334,Tuna fried w/ salt
+mackerel_raw,"Скумбрия, сырая","Mackerel, raw",fish,290,17.0,25.0,0.0,,1260,Mackerel raw
+herring_raw,"Сельдь, сырая","Herring, raw",fish,148,16.7,9.0,0.0,,1241,Herring raw
+haddock_raw,"Пикша, сырая","Haddock, raw",fish,79,19.4,0.0,0.0,,1237,Haddock raw
+saithe_raw,"Сайда, сырая","Saithe, raw",fish,82,19.1,0.5,0.0,,1202,Saithe raw
+plaice_raw,"Камбала, сырая","Plaice, raw",fish,56,12.4,0.6,0.0,,1258,Plaice raw
+halibut_raw,"Палтус дикий, сырой","Wild halibut, raw",fish,139,15.5,8.6,0.0,,1203,Halibut wild raw
+pike_raw,"Щука, сырая","Pike, raw",fish,84,20.2,0.2,0.0,,1262,Pike raw
+perch_raw,"Окунь, сырой","Perch, raw",fish,86,19.8,0.6,0.0,,1253,Perch raw
+hake_raw,"Хек, сырой","Hake, raw",fish,71,16.5,0.4,0.0,,1238,Hake raw
+pollock_raw,"Минтай, сырой","Alaska pollock, raw",fish,76,17.6,0.5,0.0,,4615,Alaska pollock raw
+shrimp_boiled,"Креветки, варёные","Shrimp, boiled",fish,77,17.6,0.6,0.0,,1395,Shrimp boiled

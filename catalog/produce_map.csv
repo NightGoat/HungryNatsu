@@ -1,0 +1,106 @@
+id,name,fdc_id,category
+apple,Яблоко,171688,fruit
+apricot,Абрикос,171697,fruit
+avocado,Авокадо,171705,fruit
+banana,Банан,173944,fruit
+blackberry,Ежевика,173946,fruit
+blueberry,Голубика,171711,fruit
+cherry,Черешня,171719,fruit
+sour_cherry,Вишня,173954,fruit
+cranberry,Клюква,171722,fruit
+blackcurrant,Смородина чёрная,173963,fruit
+redcurrant,Смородина красная,173964,fruit
+fig,Инжир,173021,fruit
+gooseberry,Крыжовник,173030,fruit
+grapefruit,Грейпфрут,173033,fruit
+grape,Виноград,174683,fruit
+guava,Гуава,173044,fruit
+kiwi,Киви,168153,fruit
+lemon,Лимон,167746,fruit
+lime,Лайм,168155,fruit
+lychee,Личи,169086,fruit
+mango,Манго,169910,fruit
+honeydew,Дыня медовая,169911,fruit
+cantaloupe,Дыня канталупа,169092,fruit
+watermelon,Арбуз,167765,fruit
+nectarine,Нектарин,169914,fruit
+orange,Апельсин,169097,fruit
+papaya,Папайя,169926,fruit
+peach,Персик,169928,fruit
+pear,Груша,169118,fruit
+pineapple,Ананас,169124,fruit
+plum,Слива,169949,fruit
+pomegranate,Гранат,169134,fruit
+raspberry,Малина,167755,fruit
+strawberry,Клубника,167762,fruit
+tangerine,Мандарин,169105,fruit
+persimmon,Хурма,169941,fruit
+quince,Айва,168163,fruit
+passion_fruit,Маракуйя,169108,fruit
+pomelo,Помело,167754,fruit
+durian,Дуриан,168192,fruit
+clementine,Клементин,168195,fruit
+mulberry,Шелковица,169913,fruit
+feijoa,Фейхоа,168176,fruit
+starfruit,Карамбола,171715,fruit
+jackfruit,Джекфрут,174687,fruit
+prickly_pear,Опунция,167750,fruit
+kumquat,Кумкват,168154,fruit
+plantain,Плантан,169130,fruit
+potato,Картофель,170026,vegetable
+tomato,Помидор,170457,vegetable
+cucumber,Огурец,168409,vegetable
+carrot,Морковь,170393,vegetable
+beet,Свёкла,169145,vegetable
+cabbage,Капуста белокочанная,169975,vegetable
+red_cabbage,Капуста краснокочанная,169977,vegetable
+savoy_cabbage,Капуста савойская,170388,vegetable
+cauliflower,Цветная капуста,169986,vegetable
+broccoli,Брокколи,170379,vegetable
+brussels_sprouts,Брюссельская капуста,170383,vegetable
+eggplant,Баклажан,169228,vegetable
+zucchini,Кабачок,169291,vegetable
+pumpkin,Тыква,168448,vegetable
+butternut_squash,Тыква мускатная,169295,vegetable
+red_pepper,Перец сладкий красный,170108,vegetable
+green_pepper,Перец сладкий зелёный,170427,vegetable
+yellow_pepper,Перец сладкий жёлтый,169383,vegetable
+chili_pepper,Перец чили красный,170106,vegetable
+onion,Лук репчатый,170000,vegetable
+garlic,Чеснок,169230,vegetable
+shallot,Лук шалот,170499,vegetable
+scallion,Лук зелёный,170005,vegetable
+leek,Лук порей,169246,vegetable
+spinach,Шпинат,168462,vegetable
+iceberg_lettuce,Салат айсберг,169248,vegetable
+romaine_lettuce,Салат ромэн,169247,vegetable
+arugula,Руккола,169387,vegetable
+kale,Кейл,168421,vegetable
+cilantro,Кинза,169997,vegetable
+celery,Сельдерей стеблевой,169988,vegetable
+celeriac,Сельдерей корневой,170400,vegetable
+parsnip,Пастернак,170417,vegetable
+radish,Редис,169276,vegetable
+turnip,Репа,170465,vegetable
+rutabaga,Брюква,168454,vegetable
+sweet_potato,Батат,168482,vegetable
+yam,Ямс,170071,vegetable
+sweet_corn,Кукуруза сладкая,169998,vegetable
+green_peas,Горох зелёный,170419,vegetable
+green_beans,Фасоль стручковая,169961,vegetable
+asparagus,Спаржа,168389,vegetable
+fennel,Фенхель,169385,vegetable
+okra,Бамия,169260,vegetable
+artichoke,Артишок,169205,vegetable
+swiss_chard,Мангольд,169991,vegetable
+watercress,Кресс водяной,170068,vegetable
+white_mushroom,Шампиньон,169251,vegetable
+oyster_mushroom,Вешенка,168580,vegetable
+shiitake,Шиитаке,169242,vegetable
+portobello,Портобелло,169255,vegetable
+chanterelle,Лисички,168422,vegetable
+enoki,Эноки,169382,vegetable
+ginger,Имбирь,169231,vegetable
+kohlrabi,Кольраби,168424,vegetable
+bok_choy,Пак чой,170390,vegetable
+chinese_cabbage,Пекинская капуста,169979,vegetable
