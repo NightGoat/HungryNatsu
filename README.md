@@ -46,15 +46,15 @@ The project's code and original assets are licensed under the [GNU Affero Genera
 | Component | License or terms | Use |
 | --- | --- | --- |
 | [Flutter](https://github.com/flutter/flutter/blob/stable/LICENSE) and [Dart](https://github.com/dart-lang/sdk/blob/main/LICENSE) | BSD 3-Clause | App framework and language SDK; Flutter's `flutter_localizations` and `flutter_test` are part of this SDK |
-| [mobile_scanner](https://github.com/juliansteenbakker/mobile_scanner/blob/develop/LICENSE) | BSD 3-Clause | Camera-based barcode scanning plugin |
+| [flutter_zxing](https://github.com/khoren93/flutter_zxing/blob/main/LICENSE) | MIT | Camera-based barcode scanning plugin |
+| [zxing-cpp](https://github.com/zxing-cpp/zxing-cpp/blob/master/LICENSE) | Apache 2.0 | Native barcode recognition used by `flutter_zxing` |
 | [shared_preferences](https://github.com/flutter/packages/blob/main/packages/shared_preferences/shared_preferences/LICENSE) | BSD 3-Clause | Local data storage |
 | [supabase_flutter](https://github.com/supabase/supabase-flutter/blob/main/packages/supabase_flutter/LICENSE) | MIT | Optional cloud authentication and storage client |
 | [flutter_lints](https://github.com/flutter/packages/blob/main/packages/flutter_lints/LICENSE) | BSD 3-Clause | Development-time lint rules |
 | [Livsmedelsverket food composition data](https://www.livsmedelsverket.se/en/about-us/open-data/food-composition-data/) | CC BY 4.0 | Swedish food records; attribution to the Swedish Food Agency is required |
 | [USDA FoodData Central data](https://fdc.nal.usda.gov/api-guide/) | CC0 1.0 | SR Legacy food records |
-| [Google ML Kit Barcode Scanning](https://developers.google.com/ml-kit/terms) | Google ML Kit terms; proprietary SDK | Android barcode recognition through `mobile_scanner` |
 
-The licenses above apply to the named components, not to the project as a whole. Every resolved Dart package, including transitive and development dependencies, is listed in [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md) with its version and license. Native dependencies retain their own upstream terms. The current Android scanner's Google ML Kit dependency is not free software and must be replaced or excluded for an F-Droid build.
+The licenses above apply to the named components, not to the project as a whole. Every resolved Dart package, including transitive and development dependencies, is listed in [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md) with its version and license. Native dependencies retain their own upstream terms.
 
 ## APIs and data sources
 
@@ -63,7 +63,6 @@ The licenses above apply to the named components, not to the project as a whole.
 | [Livsmedelsverket Food Composition API](https://www.livsmedelsverket.se/en/about-us/open-data/food-composition-data/) | Catalog preparation | Import Swedish food composition records |
 | [USDA FoodData Central SR Legacy download](https://fdc.nal.usda.gov/download-datasets/) | Catalog preparation | Import additional foods from a downloadable dataset, not a runtime API |
 | [Supabase Auth and database APIs](https://supabase.com/docs/reference/dart/introduction) | Runtime, only when cloud mode is configured | Email authentication, private diary storage, and shared food catalog |
-| [Google ML Kit Barcode Scanning API](https://developers.google.com/ml-kit/vision/barcode-scanning/android) | Runtime on Android when scanning | Recognize barcodes from camera frames |
 
 The local mode does not require a network service. The app does not call an AI API at runtime.
 

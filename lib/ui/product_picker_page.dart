@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:mobile_scanner/mobile_scanner.dart';
+import 'package:flutter_zxing/flutter_zxing.dart';
 
 import '../data/food_repository.dart';
 import '../models/product.dart';
@@ -233,17 +233,21 @@ class _ScannerPageState extends State<ScannerPage> {
       appBar: AppBar(title: Text(s.scanBarcode)),
       body: Stack(
         children: [
-          MobileScanner(
-            onDetect: (capture) {
+          ReaderWidget(
+            showGallery: false,
+            onScan: (code) {
               if (_found) return;
-              for (final code in capture.barcodes) {
-                final value = code.rawValue;
-                if (value != null && RegExp(r'^\d{8,14}$').hasMatch(value)) {
-                  _found = true;
-                  Navigator.pop(context, value);
-                  break;
-                }
-              }
+              final rawValue = code.text;
+              if (!code.isValid || rawValue == null) return;
+              // ZXing returns UPC-A as a 13-digit GTIN with a leading zero.
+              final value = code.format == Format.upca &&
+                      rawValue.length == 13 &&
+                      rawValue.startsWith('0')
+                  ? rawValue.substring(1)
+                  : rawValue;
+              if (!RegExp(r'^\d{8,14}$').hasMatch(value)) return;
+              _found = true;
+              Navigator.pop(context, value);
             },
           ),
           Align(
