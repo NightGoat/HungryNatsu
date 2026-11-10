@@ -4,8 +4,11 @@ import 'package:flutter/material.dart';
 
 import '../data/food_repository.dart';
 import '../models/diary_entry.dart';
+import '../models/diary_period.dart';
 import '../models/daily_goals.dart';
 import '../models/product.dart';
+import 'dishes_page.dart';
+import 'food_weight_dialog.dart';
 import 'product_picker_page.dart';
 import 'account_page.dart';
 import 'strings.dart';
@@ -100,34 +103,55 @@ class _HomePageState extends State<HomePage> {
       ),
     );
     if (product == null || !mounted) return;
-    final grams = await _askGrams(product);
+    final grams = await showDialog<double>(
+      context: context,
+      builder: (_) => FoodWeightDialog(product: product),
+    );
     if (grams == null || !mounted) return;
+    await _addEntry(product, grams);
+  }
+
+  Future<void> _addDish() async {
+    final selection = await Navigator.of(context).push<DishSelection>(
+      MaterialPageRoute(
+        builder: (_) => DishesPage(repository: widget.repository),
+      ),
+    );
+    if (selection == null || !mounted) return;
+    final (dish, servings) = selection;
+    await _addEntry(
+      dish.diaryProduct,
+      dish.gramsFor(servings),
+      servings: servings,
+    );
+  }
+
+  Future<void> _addEntry(
+    Product product,
+    double grams, {
+    double? servings,
+  }) async {
     try {
+      final now = DateTime.now();
       await widget.repository.addEntry(
         DiaryEntry(
-          id: '${DateTime.now().microsecondsSinceEpoch}-${Random.secure().nextInt(1 << 32)}',
+          id: '${now.microsecondsSinceEpoch}-${Random.secure().nextInt(1 << 32)}',
           product: product,
           grams: grams,
+          servings: servings,
           eatenAt: DateTime(
             _day.year,
             _day.month,
             _day.day,
-            DateTime.now().hour,
-            DateTime.now().minute,
+            now.hour,
+            now.minute,
           ),
         ),
       );
-      await _load();
+      if (mounted) await _load();
     } catch (error) {
       _showError(error);
     }
-  }
-
-  Future<double?> _askGrams(Product product) async {
-    return showDialog<double>(
-      context: context,
-      builder: (_) => _PortionDialog(product: product),
-    );
   }
 
   Future<void> _delete(DiaryEntry entry) async {
@@ -194,6 +218,10 @@ class _HomePageState extends State<HomePage> {
         : MaterialLocalizations.of(context).formatMediumDate(_day);
     final goal = _goals.calories;
     final remaining = goal == null ? null : goal - calories.round();
+    final entriesByPeriod = <DiaryPeriod, List<DiaryEntry>>{};
+    for (final entry in _entries) {
+      (entriesByPeriod[DiaryPeriod.forTime(entry.eatenAt)] ??= []).add(entry);
+    }
     return Scaffold(
       appBar: AppBar(
         titleSpacing: 12,
@@ -220,6 +248,11 @@ class _HomePageState extends State<HomePage> {
         ),
         actions: [
           IconButton(
+            tooltip: s.myDishes,
+            icon: const Icon(Icons.restaurant_menu_rounded),
+            onPressed: _addDish,
+          ),
+          IconButton(
             tooltip: s.statistics,
             icon: const Icon(Icons.bar_chart_rounded),
             onPressed: () => Navigator.of(context).push(
@@ -240,6 +273,21 @@ class _HomePageState extends State<HomePage> {
         child: ListView(
           padding: const EdgeInsets.fromLTRB(20, 12, 20, 110),
           children: [
+            if (!widget.online) ...[
+              Card(
+                child: Padding(
+                  padding: const EdgeInsets.all(14),
+                  child: Row(
+                    children: [
+                      const Icon(Icons.cloud_off_outlined),
+                      const SizedBox(width: 12),
+                      Expanded(child: Text(s.localModeNotice)),
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(height: 8),
+            ],
             Row(
               children: [
                 IconButton(
@@ -422,62 +470,94 @@ class _HomePageState extends State<HomePage> {
                 ),
               )
             else
-              for (final entry in _entries)
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 8),
-                  child: Card(
-                    margin: EdgeInsets.zero,
-                    clipBehavior: Clip.antiAlias,
-                    child: ExpansionTile(
-                      tilePadding: const EdgeInsets.symmetric(horizontal: 16),
-                      childrenPadding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
-                      shape: const Border(),
-                      collapsedShape: const Border(),
-                      title: Row(
-                        children: [
-                          Expanded(
-                            child: Text(
-                              entry.product.displayName(s.languageCode),
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                              style: const TextStyle(
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
-                          ),
-                          const SizedBox(width: 8),
-                          Text(
-                            '${entry.calories.toStringAsFixed(0)} ${s.kcal}',
-                            style: const TextStyle(fontWeight: FontWeight.w700),
-                          ),
-                        ],
-                      ),
-                      subtitle: Text(
-                        '${entry.grams.toStringAsFixed(0)} ${s.grams}',
-                      ),
+              for (final period in DiaryPeriod.values)
+                if (entriesByPeriod[period] case final entries?) ...[
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(4, 10, 4, 8),
+                    child: Row(
                       children: [
-                        Align(
-                          alignment: Alignment.centerLeft,
+                        Expanded(
                           child: Text(
-                            '${s.protein} ${entry.protein.toStringAsFixed(1)} ${s.grams} · ${s.fat} ${entry.fat.toStringAsFixed(1)} ${s.grams} · ${s.carbs} ${entry.carbs.toStringAsFixed(1)} ${s.grams}',
-                            style: Theme.of(context).textTheme.bodySmall,
+                            s.diaryPeriod(period),
+                            style: Theme.of(context).textTheme.titleMedium
+                                ?.copyWith(fontWeight: FontWeight.w800),
                           ),
                         ),
-                        Align(
-                          alignment: Alignment.centerRight,
-                          child: TextButton.icon(
-                            onPressed: () => _delete(entry),
-                            icon: const Icon(
-                              Icons.delete_outline_rounded,
-                              size: 18,
-                            ),
-                            label: Text(s.delete),
-                          ),
+                        Text(
+                          period.timeRange,
+                          style: TextStyle(color: colors.onSurfaceVariant),
                         ),
                       ],
                     ),
                   ),
-                ),
+                  for (final entry in entries)
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 8),
+                      child: Card(
+                        margin: EdgeInsets.zero,
+                        clipBehavior: Clip.antiAlias,
+                        child: ExpansionTile(
+                          tilePadding: const EdgeInsets.symmetric(
+                            horizontal: 16,
+                          ),
+                          childrenPadding: const EdgeInsets.fromLTRB(
+                            16,
+                            0,
+                            16,
+                            12,
+                          ),
+                          shape: const Border(),
+                          collapsedShape: const Border(),
+                          title: Row(
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  entry.product.displayName(s.languageCode),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(width: 8),
+                              Text(
+                                '${entry.calories.toStringAsFixed(0)} ${s.kcal}',
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                            ],
+                          ),
+                          subtitle: Text(
+                            entry.servings == null
+                                ? '${entry.grams.toStringAsFixed(0)} ${s.grams}'
+                                : s.servingsLabel(entry.servings!),
+                          ),
+                          children: [
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                '${s.protein} ${entry.protein.toStringAsFixed(1)} ${s.grams} · ${s.fat} ${entry.fat.toStringAsFixed(1)} ${s.grams} · ${s.carbs} ${entry.carbs.toStringAsFixed(1)} ${s.grams}',
+                                style: Theme.of(context).textTheme.bodySmall,
+                              ),
+                            ),
+                            Align(
+                              alignment: Alignment.centerRight,
+                              child: TextButton.icon(
+                                onPressed: () => _delete(entry),
+                                icon: const Icon(
+                                  Icons.delete_outline_rounded,
+                                  size: 18,
+                                ),
+                                label: Text(s.delete),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                ],
           ],
         ),
       ),
@@ -563,101 +643,6 @@ class _MacroTile extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-}
-
-class _PortionDialog extends StatefulWidget {
-  const _PortionDialog({required this.product});
-
-  final Product product;
-
-  @override
-  State<_PortionDialog> createState() => _PortionDialogState();
-}
-
-class _PortionDialogState extends State<_PortionDialog> {
-  final _controller = TextEditingController(text: '100');
-  bool _invalid = false;
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final s = S.of(context);
-    final grams = double.tryParse(_controller.text.replaceAll(',', '.'));
-    final calories = grams == null
-        ? null
-        : widget.product.calories * grams / 100;
-    return AlertDialog(
-      title: Text(widget.product.displayName(s.languageCode)),
-      content: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            s.sourceLabel(widget.product.slvId, widget.product.fdcId),
-            style: Theme.of(context).textTheme.bodySmall,
-          ),
-          const SizedBox(height: 12),
-          TextField(
-            controller: _controller,
-            keyboardType: const TextInputType.numberWithOptions(decimal: true),
-            autofocus: true,
-            onChanged: (_) => setState(() => _invalid = false),
-            decoration: InputDecoration(
-              labelText: s.portion,
-              suffixText: s.grams,
-              errorText: _invalid ? s.invalidPortion : null,
-            ),
-          ),
-          const SizedBox(height: 12),
-          Wrap(
-            spacing: 7,
-            children: [
-              for (final amount in [50, 100, 150, 200])
-                ChoiceChip(
-                  label: Text('$amount ${s.grams}'),
-                  selected: grams == amount,
-                  onSelected: (_) => setState(() {
-                    _controller.text = '$amount';
-                    _invalid = false;
-                  }),
-                ),
-            ],
-          ),
-          if (calories != null && grams != null && grams > 0) ...[
-            const SizedBox(height: 12),
-            Text(
-              '${calories.toStringAsFixed(0)} ${s.kcal}',
-              style: Theme.of(context).textTheme.titleMedium,
-            ),
-          ],
-        ],
-      ),
-      actions: [
-        TextButton(
-          onPressed: () => Navigator.pop(context),
-          child: Text(s.cancel),
-        ),
-        FilledButton(
-          onPressed: () {
-            final value = double.tryParse(
-              _controller.text.replaceAll(',', '.'),
-            );
-            if (value != null && value > 0 && value <= 10000) {
-              Navigator.pop(context, value);
-            } else {
-              setState(() => _invalid = true);
-            }
-          },
-          child: Text(s.add),
-        ),
-      ],
     );
   }
 }

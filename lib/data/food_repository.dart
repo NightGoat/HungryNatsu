@@ -5,12 +5,15 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../models/diary_entry.dart';
 import '../models/daily_goals.dart';
+import '../models/dish.dart';
 import '../models/product.dart';
 
 abstract class FoodRepository {
   Future<List<Product>> search(String query);
   Future<Product?> findBarcode(String barcode);
   Future<Product> saveProduct(Product product);
+  Future<List<Dish>> dishes();
+  Future<void> saveDish(Dish dish);
   Future<List<DiaryEntry>> entriesFor(DateTime day);
   Future<List<DiaryEntry>> entriesBetween(DateTime start, DateTime end);
   Future<void> addEntry(DiaryEntry entry);
@@ -37,6 +40,7 @@ class LocalFoodRepository implements FoodRepository {
   final SharedPreferences _prefs;
   static const _productsKey = 'products_v1';
   static const _entriesKey = 'entries_v1';
+  static const _dishesKey = 'dishes_v1';
   static const _goalKey = 'calorie_goal_v1';
   static const _proteinGoalKey = 'protein_goal_v1';
   static const _fatGoalKey = 'fat_goal_v1';
@@ -128,6 +132,26 @@ class LocalFoodRepository implements FoodRepository {
       ..add(jsonEncode(product.toJson()));
     await _prefs.setStringList(_productsKey, custom);
     return product;
+  }
+
+  @override
+  Future<List<Dish>> dishes() async =>
+      _dishes..sort((a, b) => a.name.compareTo(b.name));
+
+  List<Dish> get _dishes => (_prefs.getStringList(_dishesKey) ?? [])
+      .map((item) => Dish.fromJson(jsonDecode(item) as Map<String, dynamic>))
+      .toList();
+
+  @override
+  Future<void> saveDish(Dish dish) async {
+    final dishes = _dishes
+      ..removeWhere((item) => item.id == dish.id)
+      ..add(dish);
+    final saved = await _prefs.setStringList(
+      _dishesKey,
+      dishes.map((item) => jsonEncode(item.toJson())).toList(),
+    );
+    if (!saved) throw StateError('Could not write dishes to device storage');
   }
 
   @override
@@ -308,6 +332,29 @@ class SupabaseFoodRepository implements FoodRepository {
   }
 
   @override
+  Future<List<Dish>> dishes() async {
+    const pageSize = 1000;
+    final userId = _userId;
+    final dishes = <Dish>[];
+    for (var offset = 0; ; offset += pageSize) {
+      final rows = await _client
+          .from('dishes')
+          .select()
+          .eq('user_id', userId)
+          .order('name')
+          .order('id')
+          .range(offset, offset + pageSize - 1);
+      dishes.addAll(rows.map(Dish.fromJson));
+      if (rows.length < pageSize) return dishes;
+    }
+  }
+
+  @override
+  Future<void> saveDish(Dish dish) async {
+    await _client.from('dishes').upsert({...dish.toJson(), 'user_id': _userId});
+  }
+
+  @override
   Future<List<DiaryEntry>> entriesFor(DateTime day) async {
     final start = DateTime(day.year, day.month, day.day).toUtc();
     final end = DateTime(day.year, day.month, day.day + 1).toUtc();
@@ -343,11 +390,8 @@ class SupabaseFoodRepository implements FoodRepository {
   @override
   Future<void> addEntry(DiaryEntry entry) async {
     await _client.from('diary_entries').insert({
-      'id': entry.id,
+      ...entry.toJson(),
       'user_id': _userId,
-      'product': entry.product.toJson(),
-      'grams': entry.grams,
-      'eaten_at': entry.eatenAt.toUtc().toIso8601String(),
     });
     _usageCountsFuture = null;
   }

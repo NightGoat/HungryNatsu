@@ -1,5 +1,7 @@
 import 'package:flutter/widgets.dart';
 
+import '../models/diary_period.dart';
+
 class S {
   S.of(BuildContext context)
     : en = Localizations.localeOf(context).languageCode == 'en';
@@ -8,6 +10,10 @@ class S {
   String t(String ru, String english) => en ? english : ru;
 
   String get localMode => t('Локальный режим', 'Local mode');
+  String get localModeNotice => t(
+    'Данные сохраняются только на этом устройстве. Для синхронизации запустите приложение с настройками Supabase.',
+    'Data is saved only on this device. Run the app with Supabase settings to sync it.',
+  );
   String get account => t('Аккаунт', 'Account');
   String get email => t('Почта', 'Email');
   String get password => t('Пароль', 'Password');
@@ -128,6 +134,12 @@ class S {
   String get fat => t('Жиры', 'Fat');
   String get carbs => t('Углеводы', 'Carbs');
   String get diary => t('Дневник', 'Diary');
+  String diaryPeriod(DiaryPeriod period) => switch (period) {
+    DiaryPeriod.morning => t('Утро', 'Morning'),
+    DiaryPeriod.afternoon => t('День', 'Afternoon'),
+    DiaryPeriod.evening => t('Вечер', 'Evening'),
+    DiaryPeriod.night => t('Ночь', 'Night'),
+  };
   String get statistics => t('Статистика', 'Statistics');
   String get calorieTrend => t('Калории по дням', 'Calories over time');
   String get statisticsDescription =>
@@ -148,6 +160,39 @@ class S {
   );
   String get delete => t('Удалить', 'Delete');
   String get addProduct => t('Добавить продукт', 'Add food');
+  String get myDishes => t('Мои блюда', 'My dishes');
+  String get newDish => t('Собрать блюдо', 'Build a dish');
+  String get editDish => t('Изменить блюдо', 'Edit dish');
+  String get noDishes => t('Пока нет сохранённых блюд', 'No saved dishes yet');
+  String get recipeServings =>
+      t('Сколько порций в блюде?', 'How many servings does it make?');
+  String get recipeWeights => t(
+    'Укажите вес каждого ингредиента на всё блюдо.',
+    'Enter each ingredient’s weight for the whole dish.',
+  );
+  String get invalidRecipeServings =>
+      t('Введите целое число больше нуля', 'Enter a positive whole number');
+  String get addIngredient => t('Добавить ингредиент', 'Add ingredient');
+  String get removeIngredient => t('Убрать ингредиент', 'Remove ingredient');
+  String get ingredientWeight => t('Вес ингредиента', 'Ingredient weight');
+  String get ingredientsRequired =>
+      t('Добавьте хотя бы один ингредиент', 'Add at least one ingredient');
+  String get saveDish => t('Сохранить блюдо', 'Save dish');
+  String get eatenServings => t('Сколько порций съели?', 'Servings eaten');
+  String invalidEatenServings(int total) => t(
+    'Укажите больше 0 и не больше $total',
+    'Enter a number greater than 0 and at most $total',
+  );
+  String servingsLabel(num servings) {
+    final value = servings.toString().replaceFirst(RegExp(r'\.0$'), '');
+    return t(
+      '${value.replaceAll('.', ',')} порц.',
+      '$value ${servings == 1 ? 'serving' : 'servings'}',
+    );
+  }
+
+  String kcalPerServing(String value) =>
+      t('$value ккал на порцию', '$value kcal per serving');
   String get addFirstEntry =>
       t('Добавить первую запись', 'Add your first entry');
   String get add => t('Добавить', 'Add');
@@ -198,7 +243,7 @@ class S {
       ? 'USDA #$fdcId'
       : t('Ориентировочные данные', 'Approximate values');
   String get dataSourcesBody => t(
-    'Крупы, большинство фруктов и овощей, мясо и рыба: Livsmedelsverkets Livsmedelsdatabas, версия 2026-07-01. Продукты без точного соответствия в шведской базе: USDA FoodData Central SR Legacy 2018. В шведских данных углеводы указаны без клетчатки, в USDA — с клетчаткой. Яйцо и молоко: ориентировочные значения. Всё на 100 г. Для фасованных продуктов сверяйте этикетку.',
-    'Grains, most produce, meat and fish: Livsmedelsverkets Livsmedelsdatabas, version 2026-07-01. Foods without a precise Swedish match: USDA FoodData Central SR Legacy 2018. Swedish carbohydrates exclude fibre; USDA total carbohydrates include fibre. Egg and milk: approximate values. All values are per 100 g. Check the label for packaged foods.',
+    'Крупы, большинство фруктов и овощей, мясо, рыба, орехи, мёд, яйца, бобовые, семена и зелень: Livsmedelsverkets Livsmedelsdatabas, версия 2026-07-01. Продукты без точного соответствия в шведской базе: USDA FoodData Central SR Legacy 2018. В шведских данных углеводы указаны без клетчатки, в USDA — с клетчаткой. Молоко 2,5%: ориентировочное значение. Всё на 100 г. Для фасованных продуктов сверяйте этикетку.',
+    'Grains, most produce, meat, fish, nuts, honey, eggs, legumes, seeds, and herbs: Livsmedelsverkets Livsmedelsdatabas, version 2026-07-01. Foods without a precise Swedish match: USDA FoodData Central SR Legacy 2018. Swedish carbohydrates exclude fibre; USDA total carbohydrates include fibre. Milk 2.5%: approximate value. All values are per 100 g. Check the label for packaged foods.',
   );
 }

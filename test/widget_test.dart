@@ -4,6 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:hungry_natsu/data/food_repository.dart';
 import 'package:hungry_natsu/models/diary_entry.dart';
+import 'package:hungry_natsu/models/diary_period.dart';
 import 'package:hungry_natsu/models/daily_goals.dart';
 import 'package:hungry_natsu/models/calorie_statistics.dart';
 import 'package:hungry_natsu/models/product.dart';
@@ -12,6 +13,69 @@ import 'package:hungry_natsu/ui/home_page.dart';
 import 'package:hungry_natsu/ui/statistics_page.dart';
 
 void main() {
+  test('diary periods include each six-hour boundary', () {
+    final day = DateTime(2026, 11, 10);
+    for (final (hour, minute, expected) in [
+      (0, 0, DiaryPeriod.night),
+      (5, 59, DiaryPeriod.night),
+      (6, 0, DiaryPeriod.morning),
+      (11, 59, DiaryPeriod.morning),
+      (12, 0, DiaryPeriod.afternoon),
+      (17, 59, DiaryPeriod.afternoon),
+      (18, 0, DiaryPeriod.evening),
+      (23, 59, DiaryPeriod.evening),
+    ]) {
+      expect(
+        DiaryPeriod.forTime(
+          DateTime(day.year, day.month, day.day, hour, minute),
+        ),
+        expected,
+      );
+    }
+  });
+
+  testWidgets('diary shows only periods with entries', (tester) async {
+    SharedPreferences.setMockInitialValues({});
+    final repository = LocalFoodRepository(
+      await SharedPreferences.getInstance(),
+    );
+    final now = DateTime.now();
+    await repository.addEntry(
+      DiaryEntry(
+        id: 'night-entry',
+        product: const Product(
+          id: 'night-food',
+          name: 'Ночной продукт',
+          calories: 100,
+          protein: 0,
+          fat: 0,
+          carbs: 0,
+        ),
+        grams: 100,
+        eatenAt: DateTime(now.year, now.month, now.day, 2),
+      ),
+    );
+    await tester.pumpWidget(
+      MaterialApp(
+        locale: const Locale('ru'),
+        supportedLocales: const [Locale('ru'), Locale('en')],
+        localizationsDelegates: const [
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        home: HomePage(repository: repository, online: true),
+      ),
+    );
+    await tester.pumpAndSettle();
+    expect(find.text('Ночь'), findsOneWidget);
+    expect(find.text('00:00–06:00'), findsOneWidget);
+    expect(find.text('Ночной продукт'), findsOneWidget);
+    expect(find.text('Утро'), findsNothing);
+    expect(find.text('День'), findsNothing);
+    expect(find.text('Вечер'), findsNothing);
+  });
+
   test('oldest diary day clamps at the end of short months', () {
     expect(oldestDiaryDay(DateTime(2026, 5, 31)), DateTime(2026, 2, 28));
     expect(oldestDiaryDay(DateTime(2024, 5, 31)), DateTime(2024, 2, 29));

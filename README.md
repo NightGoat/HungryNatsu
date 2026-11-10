@@ -11,8 +11,9 @@ Hungry Natsu is a Flutter app for Android and iOS that combines a food diary, ca
 - Add foods manually with calories, protein, fat, carbohydrates, and an optional barcode.
 - Scan 8–14 digit EAN/UPC-style barcodes with the camera using `flutter_zxing` (ZXing C++), instead of Google ML Kit. An unknown barcode opens the new-food form.
 - Keep a diary by day, enter portion weights, calculate calories and macronutrients automatically, and delete entries.
+- Save dishes with ingredient weights and a serving count. Reuse them from **My dishes** and log whole or fractional servings in the diary.
 - Sort foods by how often they have been added to the diary across all days. Ties are sorted by name, and deleted entries no longer count.
-- Store data locally on the device without an account or network connection. When configured with Supabase, use email and password authentication, a private cloud diary protected by row-level security, and a shared catalog of foods created by signed-in users. Existing local entries are not transferred to the cloud automatically.
+- Store data locally on the device without an account or network connection. When configured with Supabase, use email and password authentication, a private cloud diary protected by row-level security, and a shared catalog of foods created by signed-in users. Local mode is clearly marked in the app.
 - Set a daily calorie goal and see progress on the home screen. In cloud mode, diary entries older than three months are deleted from the database daily at 03:00 UTC, and the calendar is limited to that period.
 - Use the optional goal helper for weight loss, maintenance, or muscle gain. It estimates protein from body weight and uses sex, age, height, and activity level to estimate calorie, fat, and carbohydrate goals. Suggested goals can be edited before saving. The body measurements entered into the helper are not stored.
 
@@ -31,6 +32,12 @@ Grains, rice, most fruit and vegetables, meat, fish, nuts, honey, eggs, legumes,
 The remaining 16 fruits and vegetables and six explicitly raw nut products, including cashews, come from [USDA FoodData Central, SR Legacy 2018](https://fdc.nal.usda.gov/download-datasets/) (CC0), used where no sufficiently close match was found in the Swedish database. Swedish carbohydrate values exclude fiber, while USDA total carbohydrate values include it. The 2.5% milk value is approximate. Actual values vary by variety and preparation; check the label for packaged foods.
 
 Source IDs, names, and values are stored in `catalog/products.csv`, and each food's source is visible in the app. Russian names and USDA ID mappings are stored in `catalog/produce_map.csv`.
+
+## Run with Supabase
+
+Apply the Supabase migrations before using saved dishes in cloud mode.
+
+Create `supabase.local.json` in the project root with `SUPABASE_URL` and the public `SUPABASE_ANON_KEY`, then run `flutter run --dart-define-from-file=supabase.local.json` if launching from the terminal. The app opens the sign-in screen when cloud mode is active and no user is signed in. Running plain `flutter run` uses local device storage. The installed app keeps the mode selected when that APK was built; opening it on the phone does not require an IDE.
 
 ## Code structure
 
