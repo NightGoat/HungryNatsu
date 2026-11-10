@@ -104,7 +104,7 @@ ginger,Имбирь,Ginger,vegetable,63,2.2,0.8,9.0,,2269,Ginger fresh
 kohlrabi,Кольраби,Kohlrabi,vegetable,29,1.7,0.1,4.4,,343,Kohlrabi
 bok_choy,Пак чой,Bok choy,vegetable,19,1.4,0.2,1.8,,7192,Pak choi
 chinese_cabbage,Пекинская капуста,Chinese cabbage,vegetable,21,1.3,0.1,2.7,,358,Napa cabbage
-egg,Яйцо куриное,Chicken egg,other,143,12.6,9.5,0.7,,,Ориентировочные значения
+egg,"Яйцо, варёное","Egg, boiled",other,136,12.1,9.8,0.0,,2205,Egg boiled
 rice,Рис варёный,"Rice, cooked",other,113,2.5,0.2,24.6,,2515,Rice long-grained boiled w/ salt
 chicken,"Куриная грудка, жареная","Chicken breast, fried",meat,116,23.0,2.5,0.0,,1170,Chicken breast fillet fresh meat fried w/o skin
 milk,"Молоко 2,5%",Milk 2.5% fat,other,52,3,2.5,4.7,,,Ориентировочные значения
@@ -196,3 +196,63 @@ perch_raw,"Окунь, сырой","Perch, raw",fish,86,19.8,0.6,0.0,,1253,Perch
 hake_raw,"Хек, сырой","Hake, raw",fish,71,16.5,0.4,0.0,,1238,Hake raw
 pollock_raw,"Минтай, сырой","Alaska pollock, raw",fish,76,17.6,0.5,0.0,,4615,Alaska pollock raw
 shrimp_boiled,"Креветки, варёные","Shrimp, boiled",fish,77,17.6,0.6,0.0,,1395,Shrimp boiled
+almonds,Миндаль,Almonds,nut,592,20.7,53.2,0.5,,1575,Almond sweet
+walnuts,Грецкие орехи,Walnuts,nut,680,13.8,64.8,8.3,,1576,Walnuts
+hazelnuts,Фундук,Hazelnuts,nut,658,13.2,64.6,0.5,,1558,Hazelnuts
+cashews_roasted,"Кешью жареный, без соли","Cashews, roasted unsalted",nut,597,18.0,48.7,19.1,,1557,Cashew nuts roasted w/o salt
+cashews_salted,"Кешью жареный, солёный","Cashews, roasted salted",nut,597,18.0,48.7,19.1,,6053,Cashew nuts roasted w/ salt
+pistachios,"Фисташки, без соли","Pistachios, unsalted",nut,555,23.4,42.5,15.8,,1570,Pistachio nuts w/o salt
+pecans,Пекан,Pecans,nut,714,8.5,73.3,1.5,,1569,Pecan nuts
+brazil_nuts,Бразильские орехи,Brazil nuts,nut,683,14.2,67.8,0.0,,1568,Brazil nuts
+macadamia,Макадамия,Macadamia nuts,nut,740,7.9,75.8,5.2,,7024,Macadamia nuts
+pine_nuts,Кедровые орехи,Pine nuts,nut,697,14.8,66.8,8.9,,3071,Pine nuts
+peanuts_dried,Арахис сушёный,"Peanuts, dried",nut,586,25.7,49.0,8.2,,1560,Peanuts dried
+peanuts_roasted,Арахис жареный,"Peanuts, roasted",nut,605,22.4,51.3,9.3,,1561,Peanuts roasted
+peanuts_salted,"Арахис жареный, солёный","Peanuts, roasted salted",nut,605,22.4,51.3,9.3,,1562,Peanuts roasted salted
+chestnuts,Каштаны,Chestnuts,nut,201,2.4,2.2,39.0,,1563,Chestnuts
+chestnuts_roasted,Каштаны жареные,"Chestnuts, roasted",nut,230,3.2,2.2,45.0,,1577,Chestnuts roasted
+coconut,Кокос свежий,"Coconut, fresh",nut,352,3.4,33.5,6.1,,1565,Coconut
+coconut_dried,"Кокосовая стружка, сушёная","Shredded coconut, dried",nut,690,6.2,67.2,13.1,,1564,Shredded coconut dried
+honey,Мёд,Honey,other,332,0.3,0.0,81.5,,1896,Honey
+egg_raw,"Яйцо, сырое","Egg, raw",other,136,12.1,9.8,0.0,,1225,Egg raw
+egg_fried,"Яйцо, жареное","Egg, fried",other,190,13.2,15.3,0.0,,1233,Egg fried
+egg_white_raw,"Яичный белок, сырой","Egg white, raw",other,48,11.1,0.0,0.8,,1227,Egg white raw
+egg_yolk_raw,"Яичный желток, сырой","Egg yolk, raw",other,325,15.9,28.6,1.9,,1226,Egg yolk raw
+lentils_dry,"Чечевица, сухая","Lentils, dried",legume,339,24.4,0.8,52.5,,884,Lentils dried
+red_lentils_cooked,"Чечевица красная, варёная","Red lentils, cooked",legume,125,10.6,0.6,14.6,,3822,Red lentils dried boiled w/ salt
+green_lentils_cooked,"Чечевица зелёная, варёная","Green lentils, cooked",legume,127,9.4,0.7,15.9,,3821,Green lentils dried boiled w/ salt
+chickpeas_dry,"Нут, сухой","Chickpeas, dried",legume,331,18.8,5.1,39.6,,881,Chick peas dried
+chickpeas_cooked,"Нут, варёный","Chickpeas, cooked",legume,133,8.1,2.9,12.6,,3762,Chickpeas dried boiled w/ salt
+kidney_beans_dry,"Фасоль красная, сухая","Kidney beans, dried",legume,326,19.9,1.8,48.6,,877,Kidney beans dried
+red_beans_cooked,"Фасоль красная, варёная","Red beans, cooked",legume,108,7.8,0.5,14.5,,878,Red beans dried boiled w/o salt
+white_beans_dry,"Фасоль белая, сухая","White beans, dried",legume,319,22.0,1.6,45.7,,879,White beans dried
+white_beans_cooked,"Фасоль белая, варёная","White beans, cooked",legume,108,7.8,0.6,14.2,,880,White beans dried boiled w/o salt
+soybeans_dry,"Соя, сухая","Soybeans, dried",legume,410,37.8,19.4,10.2,,887,Soy beans dried
+soybeans_cooked,"Соя, варёная","Soybeans, cooked",legume,128,11.0,5.7,5.8,,888,Soybeans dried boiled w/o salt
+peas_dry,"Горох, сухой","Peas, dried",legume,317,21.5,1.0,49.2,,891,Green or yellow peas dried
+green_peas_cooked,"Горошек зелёный, варёный","Green peas, cooked",legume,69,5.2,0.4,8.9,,2547,Green peas boiled w/ salt frozen product
+tofu,Тофу,Tofu,legume,70,6.6,4.2,1.2,,905,Tofu bean curd
+sunflower_seeds,Семечки подсолнечника,Sunflower seeds,seed,618,20.6,56.1,3.9,,1574,Sunflower seeds
+pumpkin_seeds,Тыквенные семечки,Pumpkin seeds,seed,573,29.8,48.0,2.4,,1571,Pumpkin seeds
+sesame_seeds,Кунжут очищенный,"Sesame seeds, hulled",seed,644,20.9,59.7,2.7,,1573,Sesame seeds w/o husk
+chia_seeds,Семена чиа,Chia seeds,seed,448,19.4,33.9,0.0,,6157,Chia seeds
+parsley_fresh,Петрушка свежая,"Parsley, fresh",herb,78,5.6,1.1,9.4,,352,Leaf parsley
+dill_fresh,Укроп свежий,"Dill, fresh",herb,58,3.7,0.8,7.4,,377,Dill fresh
+basil_fresh,Базилик свежий,"Basil, fresh",herb,25,2.5,0.6,0.4,,379,Basil fresh
+mint_fresh,Мята свежая,Mint leaves,herb,46,4.7,0.6,2.4,,7194,Mint leaves
+dates_dried,Финики сушёные,"Dates, dried",fruit,321,2.4,0.6,71.9,,603,Dates dried
+raisins,Изюм,Raisins,fruit,285,1.9,0.5,64.4,,610,Raisins
+olives_green,Оливки зелёные с перцем,Green olives with pepper,vegetable,128,0.6,13.1,1.1,,401,Olives green w/ bell pepper filling drained
+olives_black,Маслины с маслом,Black olives with oil,vegetable,142,0.8,14.1,1.8,,402,Olives black w/ oil drained
+potato_boiled,"Картофель, варёный","Potato, boiled",vegetable,85,1.9,0.1,17.8,,5136,Potato old boiled w/o salt
+carrot_boiled,"Морковь, варёная","Carrot, boiled",vegetable,36,0.7,0.2,6.6,,305,Carrot boiled w/ salt
+beet_boiled,"Свёкла, варёная","Beetroot, boiled",vegetable,51,1.2,0.1,9.8,,316,Beetroot boiled w/o salt
+cauliflower_boiled,"Цветная капуста, варёная","Cauliflower, boiled",vegetable,25,1.7,0.0,3.7,,434,Cauliflower boiled w/ salt
+sweet_potato_boiled,"Батат, варёный","Sweet potato, boiled",vegetable,93,2.1,0.5,16.9,,3772,Sweet potatoes boiled w/ salt
+asparagus_boiled,"Спаржа, варёная","Asparagus, boiled",vegetable,22,1.9,0.2,1.8,,5861,Asparagus green boiled w/ salt
+cashews_raw,"Кешью, сырой","Cashews, raw",nut,553,18.22,43.85,30.19,170162,,"Nuts, cashew nuts, raw"
+macadamia_raw,"Макадамия, сырая","Macadamia nuts, raw",nut,718,7.91,75.77,13.82,170178,,"Nuts, macadamia nuts, raw"
+pistachios_raw,"Фисташки, сырые","Pistachios, raw",nut,560,20.16,45.32,27.17,170184,,"Nuts, pistachio nuts, raw"
+peanuts_raw,"Арахис, сырой","Peanuts, raw",nut,567,25.8,49.24,16.13,172430,,"Peanuts, all types, raw"
+chestnuts_raw,"Каштаны европейские, сырые","European chestnuts, raw",nut,196,1.63,1.25,44.17,170575,,"Nuts, chestnuts, european, raw, peeled"
+coconut_raw,"Кокосовая мякоть, сырая","Coconut meat, raw",nut,354,3.33,33.49,15.23,170169,,"Nuts, coconut meat, raw"

@@ -18,6 +18,16 @@ DART = ROOT / 'lib' / 'models' / 'seed_products.dart'
 SQL = ROOT / 'supabase' / 'schema.sql'
 FIELDS = ['id', 'name', 'name_en', 'category', 'calories', 'protein', 'fat', 'carbs', 'fdc_id', 'slv_id', 'source_description']
 NUTRIENTS = {'1008': 'calories', '1003': 'protein', '1004': 'fat', '1005': 'carbs'}
+RAW_NUTS = [
+    ('cashews_raw', 'Кешью, сырой', 'Cashews, raw', '170162', 'Nuts, cashew nuts, raw'),
+    ('macadamia_raw', 'Макадамия, сырая', 'Macadamia nuts, raw', '170178', 'Nuts, macadamia nuts, raw'),
+    ('pistachios_raw', 'Фисташки, сырые', 'Pistachios, raw', '170184', 'Nuts, pistachio nuts, raw'),
+    ('peanuts_raw', 'Арахис, сырой', 'Peanuts, raw', '172430', 'Peanuts, all types, raw'),
+    ('chestnuts_raw', 'Каштаны европейские, сырые', 'European chestnuts, raw', '170575', 'Nuts, chestnuts, european, raw, peeled'),
+    ('coconut_raw', 'Кокосовая мякоть, сырая', 'Coconut meat, raw', '170169', 'Nuts, coconut meat, raw'),
+]
+
+
 def zip_rows(archive, name):
     path = next(path for path in archive.namelist() if path.endswith('/' + name + '.csv'))
     return csv.DictReader(io.TextIOWrapper(archive.open(path), encoding='utf-8-sig'))
@@ -28,7 +38,7 @@ def refresh_from_usda(archive_path):
         current = {row['id']: row for row in csv.DictReader(file)}
     with MAP.open(newline='', encoding='utf-8') as file:
         mapping = list(csv.DictReader(file))
-    ids = {row['fdc_id'] for row in mapping}
+    ids = {row['fdc_id'] for row in mapping} | {row[3] for row in RAW_NUTS}
     with zipfile.ZipFile(archive_path) as archive:
         foods = {row['fdc_id']: row for row in zip_rows(archive, 'food') if row['fdc_id'] in ids}
         nutrients = {fdc_id: {} for fdc_id in ids}
@@ -36,7 +46,6 @@ def refresh_from_usda(archive_path):
             if row['fdc_id'] in ids and row['nutrient_id'] in NUTRIENTS:
                 nutrients[row['fdc_id']][NUTRIENTS[row['nutrient_id']]] = row['amount']
 
-    products = []
     for row in mapping:
         if current[row['id']]['slv_id']:
             continue
@@ -45,14 +54,24 @@ def refresh_from_usda(archive_path):
         description = food['description']
         assert food['food_category_id'] in {'9', '11'} and 'raw' in description.lower(), description
         assert len(nutrients[fdc_id]) == 4, f'Missing nutrients for {fdc_id}'
-        products.append({**current[row['id']], **row, **nutrients[fdc_id],
-                         'slv_id': '', 'source_description': description})
-    products += [row for row in current.values() if not row['fdc_id']]
+        current[row['id']].update(row)
+        current[row['id']].update(nutrients[fdc_id], slv_id='', source_description=description)
+
+    for id_, name, name_en, fdc_id, expected_description in RAW_NUTS:
+        food = foods[fdc_id]
+        assert food['food_category_id'] in {'12', '16'}, expected_description
+        assert food['description'] == expected_description and 'raw' in expected_description.lower()
+        assert len(nutrients[fdc_id]) == 4, f'Missing nutrients for {fdc_id}'
+        if id_ not in current:
+            current[id_] = dict.fromkeys(FIELDS, '')
+        current[id_].update(id=id_, name=name, name_en=name_en, category='nut',
+                            **nutrients[fdc_id], fdc_id=fdc_id, slv_id='',
+                            source_description=expected_description)
 
     with CATALOG.open('w', newline='', encoding='utf-8') as file:
         writer = csv.DictWriter(file, fieldnames=FIELDS)
         writer.writeheader()
-        writer.writerows(products)
+        writer.writerows(current.values())
 
 
 def dart_string(value):

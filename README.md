@@ -6,7 +6,7 @@ Hungry Natsu is a Flutter app for Android and iOS that combines a food diary, ca
 
 ## Features
 
-- Search 197 staple foods without barcodes: 105 fruits, vegetables, herbs, and mushrooms; 44 grains and rice products; 24 meat and poultry products; 22 fish and seafood products; plus eggs and milk. Nutrition values are given per 100 g.
+- Search 257 staple foods without barcodes: fruit and vegetables, grains and rice, meat and fish, 23 nut products including raw cashews, plus honey, eggs, legumes, seeds, herbs, and other basics. Nutrition values are given per 100 g.
 - Switch between English and Russian on the home screen. Search works with names in either language.
 - Add foods manually with calories, protein, fat, carbohydrates, and an optional barcode.
 - Scan 8–14 digit EAN/UPC-style barcodes with the camera using `flutter_zxing` (ZXing C++), instead of Google ML Kit. An unknown barcode opens the new-food form.
@@ -26,9 +26,9 @@ For a complete goal, protein is capped at 30% of calories, fat is set to 25%, an
 
 ## Food data and attribution
 
-Grains, rice, 89 fruits and vegetables, meat, and fish come from **Livsmedelsverkets Livsmedelsdatabas, version 2026-07-01**, via the [Swedish Food Agency's open API](https://www.livsmedelsverket.se/en/about-us/open-data/food-composition-data/). This data is published under CC BY 4.0. The CSV retains each source record ID and original name, and the calorie and macronutrient values were copied without modification. Dry and cooked grains, and raw and cooked meat and fish, are listed separately. These are generic foods rather than branded products.
+Grains, rice, most fruit and vegetables, meat, fish, nuts, honey, eggs, legumes, seeds, and herbs come from **Livsmedelsverkets Livsmedelsdatabas, version 2026-07-01**, via the [Swedish Food Agency's open API](https://www.livsmedelsverket.se/en/about-us/open-data/food-composition-data/). This data is published under CC BY 4.0. The CSV retains each source record ID and original name, and the calorie and macronutrient values were copied without modification. Dry and cooked, plain, roasted, and salted variants are listed separately where available. These are generic foods rather than branded products.
 
-The remaining 16 fruits and vegetables are raw foods from [USDA FoodData Central, SR Legacy 2018](https://fdc.nal.usda.gov/download-datasets/) (CC0), used where no sufficiently close match was found in the Swedish database. Swedish carbohydrate values exclude fiber, while USDA total carbohydrate values include it. Egg and milk values are approximate. Actual values vary by variety and preparation; check the label for packaged foods.
+The remaining 16 fruits and vegetables and six explicitly raw nut products, including cashews, come from [USDA FoodData Central, SR Legacy 2018](https://fdc.nal.usda.gov/download-datasets/) (CC0), used where no sufficiently close match was found in the Swedish database. Swedish carbohydrate values exclude fiber, while USDA total carbohydrate values include it. The 2.5% milk value is approximate. Actual values vary by variety and preparation; check the label for packaged foods.
 
 Source IDs, names, and values are stored in `catalog/products.csv`, and each food's source is visible in the app. Russian names and USDA ID mappings are stored in `catalog/produce_map.csv`.
 

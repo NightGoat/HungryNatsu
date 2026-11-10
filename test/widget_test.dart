@@ -53,7 +53,7 @@ void main() {
   });
 
   test('common produce is available without barcodes', () {
-    expect(seedProducts.length, 197);
+    expect(seedProducts.length, 257);
     final watermelon = seedProducts.singleWhere(
       (product) => product.name == 'Арбуз',
     );
@@ -80,6 +80,23 @@ void main() {
     expect(cod.slvId, 1246);
     expect(cod.calories, 78);
     expect(Product.fromJson(cod.toJson()).slvId, cod.slvId);
+    final almonds = seedProducts.singleWhere(
+      (product) => product.id == 'almonds',
+    );
+    expect(almonds.nameEn, 'Almonds');
+    expect(almonds.slvId, 1575);
+    expect(almonds.calories, 592);
+    final honey = seedProducts.singleWhere((product) => product.id == 'honey');
+    expect(honey.slvId, 1896);
+    expect(honey.calories, 332);
+    final egg = seedProducts.singleWhere((product) => product.id == 'egg');
+    expect(egg.slvId, 2205);
+    expect(egg.name, 'Яйцо, варёное');
+    final rawCashews = seedProducts.singleWhere(
+      (product) => product.id == 'cashews_raw',
+    );
+    expect(rawCashews.fdcId, 170162);
+    expect(rawCashews.calories, 553);
   });
 
   test(

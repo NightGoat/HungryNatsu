@@ -88,6 +88,10 @@ PRODUCE = {
     'cabbage': (370, 'White cabbage'),
 }
 
+EXISTING = {
+    'egg': (2205, 'Egg boiled'),
+}
+
 # (id, Russian name, English name, category, SLV ID, exact API name)
 NEW = [
     ('beef_raw', 'Говядина, сырая', 'Beef, raw', 'meat', 5066, 'Beef meat raw'),
@@ -136,6 +140,60 @@ NEW = [
     ('hake_raw', 'Хек, сырой', 'Hake, raw', 'fish', 1238, 'Hake raw'),
     ('pollock_raw', 'Минтай, сырой', 'Alaska pollock, raw', 'fish', 4615, 'Alaska pollock raw'),
     ('shrimp_boiled', 'Креветки, варёные', 'Shrimp, boiled', 'fish', 1395, 'Shrimp boiled'),
+    ('almonds', 'Миндаль', 'Almonds', 'nut', 1575, 'Almond sweet'),
+    ('walnuts', 'Грецкие орехи', 'Walnuts', 'nut', 1576, 'Walnuts'),
+    ('hazelnuts', 'Фундук', 'Hazelnuts', 'nut', 1558, 'Hazelnuts'),
+    ('cashews_roasted', 'Кешью жареный, без соли', 'Cashews, roasted unsalted', 'nut', 1557, 'Cashew nuts roasted w/o salt'),
+    ('cashews_salted', 'Кешью жареный, солёный', 'Cashews, roasted salted', 'nut', 6053, 'Cashew nuts roasted w/ salt'),
+    ('pistachios', 'Фисташки, без соли', 'Pistachios, unsalted', 'nut', 1570, 'Pistachio nuts w/o salt'),
+    ('pecans', 'Пекан', 'Pecans', 'nut', 1569, 'Pecan nuts'),
+    ('brazil_nuts', 'Бразильские орехи', 'Brazil nuts', 'nut', 1568, 'Brazil nuts'),
+    ('macadamia', 'Макадамия', 'Macadamia nuts', 'nut', 7024, 'Macadamia nuts'),
+    ('pine_nuts', 'Кедровые орехи', 'Pine nuts', 'nut', 3071, 'Pine nuts'),
+    ('peanuts_dried', 'Арахис сушёный', 'Peanuts, dried', 'nut', 1560, 'Peanuts dried'),
+    ('peanuts_roasted', 'Арахис жареный', 'Peanuts, roasted', 'nut', 1561, 'Peanuts roasted'),
+    ('peanuts_salted', 'Арахис жареный, солёный', 'Peanuts, roasted salted', 'nut', 1562, 'Peanuts roasted salted'),
+    ('chestnuts', 'Каштаны', 'Chestnuts', 'nut', 1563, 'Chestnuts'),
+    ('chestnuts_roasted', 'Каштаны жареные', 'Chestnuts, roasted', 'nut', 1577, 'Chestnuts roasted'),
+    ('coconut', 'Кокос свежий', 'Coconut, fresh', 'nut', 1565, 'Coconut'),
+    ('coconut_dried', 'Кокосовая стружка, сушёная', 'Shredded coconut, dried', 'nut', 1564, 'Shredded coconut dried'),
+    ('honey', 'Мёд', 'Honey', 'other', 1896, 'Honey'),
+    ('egg_raw', 'Яйцо, сырое', 'Egg, raw', 'other', 1225, 'Egg raw'),
+    ('egg_fried', 'Яйцо, жареное', 'Egg, fried', 'other', 1233, 'Egg fried'),
+    ('egg_white_raw', 'Яичный белок, сырой', 'Egg white, raw', 'other', 1227, 'Egg white raw'),
+    ('egg_yolk_raw', 'Яичный желток, сырой', 'Egg yolk, raw', 'other', 1226, 'Egg yolk raw'),
+    ('lentils_dry', 'Чечевица, сухая', 'Lentils, dried', 'legume', 884, 'Lentils dried'),
+    ('red_lentils_cooked', 'Чечевица красная, варёная', 'Red lentils, cooked', 'legume', 3822, 'Red lentils dried boiled w/ salt'),
+    ('green_lentils_cooked', 'Чечевица зелёная, варёная', 'Green lentils, cooked', 'legume', 3821, 'Green lentils dried boiled w/ salt'),
+    ('chickpeas_dry', 'Нут, сухой', 'Chickpeas, dried', 'legume', 881, 'Chick peas dried'),
+    ('chickpeas_cooked', 'Нут, варёный', 'Chickpeas, cooked', 'legume', 3762, 'Chickpeas dried boiled w/ salt'),
+    ('kidney_beans_dry', 'Фасоль красная, сухая', 'Kidney beans, dried', 'legume', 877, 'Kidney beans dried'),
+    ('red_beans_cooked', 'Фасоль красная, варёная', 'Red beans, cooked', 'legume', 878, 'Red beans dried boiled w/o salt'),
+    ('white_beans_dry', 'Фасоль белая, сухая', 'White beans, dried', 'legume', 879, 'White beans dried'),
+    ('white_beans_cooked', 'Фасоль белая, варёная', 'White beans, cooked', 'legume', 880, 'White beans dried boiled w/o salt'),
+    ('soybeans_dry', 'Соя, сухая', 'Soybeans, dried', 'legume', 887, 'Soy beans dried'),
+    ('soybeans_cooked', 'Соя, варёная', 'Soybeans, cooked', 'legume', 888, 'Soybeans dried boiled w/o salt'),
+    ('peas_dry', 'Горох, сухой', 'Peas, dried', 'legume', 891, 'Green or yellow peas dried'),
+    ('green_peas_cooked', 'Горошек зелёный, варёный', 'Green peas, cooked', 'legume', 2547, 'Green peas boiled w/ salt frozen product'),
+    ('tofu', 'Тофу', 'Tofu', 'legume', 905, 'Tofu bean curd'),
+    ('sunflower_seeds', 'Семечки подсолнечника', 'Sunflower seeds', 'seed', 1574, 'Sunflower seeds'),
+    ('pumpkin_seeds', 'Тыквенные семечки', 'Pumpkin seeds', 'seed', 1571, 'Pumpkin seeds'),
+    ('sesame_seeds', 'Кунжут очищенный', 'Sesame seeds, hulled', 'seed', 1573, 'Sesame seeds w/o husk'),
+    ('chia_seeds', 'Семена чиа', 'Chia seeds', 'seed', 6157, 'Chia seeds'),
+    ('parsley_fresh', 'Петрушка свежая', 'Parsley, fresh', 'herb', 352, 'Leaf parsley'),
+    ('dill_fresh', 'Укроп свежий', 'Dill, fresh', 'herb', 377, 'Dill fresh'),
+    ('basil_fresh', 'Базилик свежий', 'Basil, fresh', 'herb', 379, 'Basil fresh'),
+    ('mint_fresh', 'Мята свежая', 'Mint leaves', 'herb', 7194, 'Mint leaves'),
+    ('dates_dried', 'Финики сушёные', 'Dates, dried', 'fruit', 603, 'Dates dried'),
+    ('raisins', 'Изюм', 'Raisins', 'fruit', 610, 'Raisins'),
+    ('olives_green', 'Оливки зелёные с перцем', 'Green olives with pepper', 'vegetable', 401, 'Olives green w/ bell pepper filling drained'),
+    ('olives_black', 'Маслины с маслом', 'Black olives with oil', 'vegetable', 402, 'Olives black w/ oil drained'),
+    ('potato_boiled', 'Картофель, варёный', 'Potato, boiled', 'vegetable', 5136, 'Potato old boiled w/o salt'),
+    ('carrot_boiled', 'Морковь, варёная', 'Carrot, boiled', 'vegetable', 305, 'Carrot boiled w/ salt'),
+    ('beet_boiled', 'Свёкла, варёная', 'Beetroot, boiled', 'vegetable', 316, 'Beetroot boiled w/o salt'),
+    ('cauliflower_boiled', 'Цветная капуста, варёная', 'Cauliflower, boiled', 'vegetable', 434, 'Cauliflower boiled w/ salt'),
+    ('sweet_potato_boiled', 'Батат, варёный', 'Sweet potato, boiled', 'vegetable', 3772, 'Sweet potatoes boiled w/ salt'),
+    ('asparagus_boiled', 'Спаржа, варёная', 'Asparagus, boiled', 'vegetable', 5861, 'Asparagus green boiled w/ salt'),
 ]
 
 
@@ -175,12 +233,14 @@ def main():
     selections = {row['id']: (int(row['slv_id']), row['source_description'])
                   for row in rows if row['slv_id']}
     selections.update(PRODUCE)
+    selections.update(EXISTING)
     selections.update({row[0]: (row[4], row[5]) for row in NEW})
     source_names = {}
     for number, description in selections.values():
         assert number not in source_names or source_names[number] == description
         source_names[number] = description
     assert all(key in by_id for key in PRODUCE)
+    assert all(key in by_id for key in EXISTING)
     assert all(key not in by_id or by_id[key]['slv_id'] == str(number)
                for key, _, _, _, number, _ in NEW)
 
@@ -202,6 +262,8 @@ def main():
     by_id['chicken'].update(name='Куриная грудка, жареная',
                             name_en='Chicken breast, fried',
                             category='meat', **values[1170])
+    by_id['egg'].update(name='Яйцо, варёное', name_en='Egg, boiled',
+                        **values[2205])
     # The separate entry for this same source value is not needed.
     rows = [row for row in rows if row['id'] not in {'chicken_breast_fried', 'lamb_minced_raw'}]
 
